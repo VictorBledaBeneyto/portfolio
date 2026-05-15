@@ -9,17 +9,21 @@
     function fadeOut() {
         pt.style.transition = 'none';
         pt.style.opacity = '1';
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-            pt.style.transition = 'opacity .45s ease';
-            pt.style.opacity = '0';
-        }));
+        pt.getBoundingClientRect(); // fuerza reflow síncrono
+        pt.style.transition = 'opacity .45s ease';
+        pt.style.opacity = '0';
     }
 
-    // Carga normal
     fadeOut();
 
-    // Restauracion desde bfcache (boton atras/adelante del navegador)
-    window.addEventListener('pageshow', e => { if (e.persisted) fadeOut(); });
+    // Antes de entrar en bfcache, guardar el overlay como transparente
+    window.addEventListener('pagehide', e => {
+        if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
+    });
+    // Al restaurar desde bfcache, el overlay ya es 0; solo lo confirmamos
+    window.addEventListener('pageshow', e => {
+        if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
+    });
 
     document.querySelectorAll('a[href]').forEach(link => {
         const href = link.getAttribute('href');
