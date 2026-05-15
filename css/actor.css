@@ -145,7 +145,7 @@
             background: #0d1119;
             z-index: 9999;
             pointer-events: none;
-            opacity: 1;
+            opacity: 0;
             transition: opacity .45s ease;
         }
 

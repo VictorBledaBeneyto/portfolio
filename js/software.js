@@ -676,25 +676,9 @@ function deployVictor() {
 (function() {
     const pt = document.getElementById('page-transition');
 
-    function fadeOut() {
-        pt.style.transition = 'none';
-        pt.style.opacity = '1';
-        pt.getBoundingClientRect(); // fuerza reflow síncrono
-        pt.style.transition = 'opacity .45s ease';
-        pt.style.opacity = '0';
-    }
+    // El overlay arranca en opacity:0 (CSS). Solo se activa al navegar fuera.
 
-    fadeOut();
-
-    // Antes de entrar en bfcache, guardar el overlay como transparente
-    window.addEventListener('pagehide', e => {
-        if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
-    });
-    // Al restaurar desde bfcache, el overlay ya es 0; solo lo confirmamos
-    window.addEventListener('pageshow', e => {
-        if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
-    });
-
+    // Salida: fade a negro y navega
     document.querySelectorAll('a[href]').forEach(link => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto') ||
@@ -705,5 +689,13 @@ function deployVictor() {
             pt.style.opacity = '1';
             setTimeout(() => window.location.href = href, 420);
         });
+    });
+
+    // Seguridad bfcache: guardar overlay transparente antes de cachear
+    window.addEventListener('pagehide', e => {
+        if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
+    });
+    window.addEventListener('pageshow', e => {
+        if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
     });
 })();

@@ -178,7 +178,7 @@
         #page-transition {
             position:fixed;inset:0;background:#020206;
             z-index:9999;pointer-events:none;
-            opacity:1;transition:opacity .45s ease;
+            opacity:0;transition:opacity .45s ease;
         }
 
         /* ─── Mobile name (shown when SVG is hidden) ─────── */
