@@ -146,4 +146,4 @@ Ambos perfiles comparten identidad visual (paleta dorado/cian, tipografias, tran
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-victor--bleda--beneyto-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/)
 [![GitHub](https://img.shields.io/badge/GitHub-VictorBledaBeneyto-181717?style=flat&logo=github)](https://github.com/VictorBledaBeneyto)
-
+[![Instagram](https://img.shields.io/badge/Instagram-viktor__bleda-E4405F?style=flat&logo=instagram)](https://www.instagram.com/viktor_bleda)

@@ -21,17 +21,27 @@
 
         // ── Transiciones entre páginas ────────────────────────
         const pt = document.getElementById('page-transition');
-        // Fade in al cargar
-        void pt.offsetWidth;
-        pt.style.transition = 'opacity .45s ease';
-        pt.style.opacity = '0';
-        // Fade out al navegar
+
+        function fadeOut() {
+            pt.style.transition = 'none';
+            pt.style.opacity = '1';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                pt.style.transition = 'opacity .45s ease';
+                pt.style.opacity = '0';
+            }));
+        }
+
+        // Carga normal + restauración desde bfcache (botón atrás)
+        fadeOut();
+        window.addEventListener('pageshow', e => { if (e.persisted) fadeOut(); });
+
         document.querySelectorAll('a[href]').forEach(link => {
             const href = link.getAttribute('href');
             if (!href || href.startsWith('#') || href.startsWith('mailto') ||
                 href.startsWith('http') || link.target === '_blank') return;
             link.addEventListener('click', e => {
                 e.preventDefault();
+                pt.style.transition = 'opacity .45s ease';
                 pt.style.opacity = '1';
                 setTimeout(() => window.location.href = href, 420);
             });
