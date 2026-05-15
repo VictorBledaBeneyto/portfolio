@@ -1,8 +1,7 @@
 'use strict';
 
-// ══════════════════════════════════════════════════════
-// CONSOLE SIGNATURE
-// ══════════════════════════════════════════════════════
+// mensaje en la consola para desarrolladores curiosos — me pareció un detalle guay
+// ────────────────────────────────
 console.log('%c🚀 Hola, desarrollador/a!','color:#00d4ff;font-size:22px;font-weight:bold;');
 console.log(
     '%c¿Inspeccionando el código? Exactamente el perfil que busco.\n\n' +
@@ -13,9 +12,9 @@ console.log(
     'color:#94a3b8;font-size:13px;line-height:2;font-family:monospace;'
 );
 
-// ══════════════════════════════════════════════════════
-// EMAIL OBFUSCATION
-// ══════════════════════════════════════════════════════
+// ofuscación del email — para no poner el email a pelo y que los bots lo rastrilles
+// esto lo vi en un tutorial, no sé si es lo más seguro pero mejor que nada
+// ────────────────────────────────
 document.querySelectorAll('.email-obf').forEach(el => {
     const addr = el.dataset.u + '@' + el.dataset.d;
     if (el.tagName === 'A') {
@@ -27,9 +26,9 @@ document.querySelectorAll('.email-obf').forEach(el => {
     }
 });
 
-// ══════════════════════════════════════════════════════
-// CURSOR
-// ══════════════════════════════════════════════════════
+// cursor personalizado con punto y anillo — lo aprendí en clase y lo tuneé a mi gusto
+// el anillo va con un pequeño retardo para que parezca que flota, mola bastante
+// ────────────────────────────────
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 let mx = 0, my = 0;
@@ -44,9 +43,9 @@ document.querySelectorAll('a,button,.skill-tag,.project-card,.edu-card,.soft-car
     el.addEventListener('mouseleave', () => ring.style.transform='translate(-50%,-50%) scale(1)');
 });
 
-// ══════════════════════════════════════════════════════
-// TYPEWRITER
-// ══════════════════════════════════════════════════════
+// efecto typewriter en el hero — escribe y borra las frases en bucle
+// esto lo vi en varios portfolios y había que ponerlo, me salió bastante chulo
+// ────────────────────────────────
 const PHRASES = ['Desarrollador de Software','Especialista en IA & Big Data','Arquitecturas Distribuidas','Visión Artificial · PyTorch','Event-Driven · Kafka · Docker'];
 let pIdx=0,cIdx=0,deleting=false;
 const typedEl=document.getElementById('typed-text');
@@ -64,9 +63,9 @@ function typeWriter(){
 }
 typeWriter();
 
-// ══════════════════════════════════════════════════════
-// SCROLL COUNTERS
-// ══════════════════════════════════════════════════════
+// contadores animados al hacer scroll — cuando llegas a las stats los números suben solos
+// IntersectionObserver es lo mejor que he aprendido este año, antes usaba scroll events 😬
+// ────────────────────────────────
 const counterObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
         if(!e.isIntersecting)return;
@@ -82,9 +81,9 @@ const counterObs=new IntersectionObserver(entries=>{
 },{threshold:.5});
 document.querySelectorAll('.stat-num[data-target]').forEach(c=>counterObs.observe(c));
 
-// ══════════════════════════════════════════════════════
-// SCROLL REVEAL
-// ══════════════════════════════════════════════════════
+// scroll reveal para las tarjetas — aparecen al entrar en el viewport
+// podría optimizarse usando una sola instancia del observer, pero funciona bien así
+// ────────────────────────────────
 const revealObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='none';}});
 },{threshold:.1});
@@ -94,9 +93,9 @@ document.querySelectorAll('.project-card,.edu-card,.soft-card,.timeline-item').f
     revealObs.observe(el);
 });
 
-// ══════════════════════════════════════════════════════
-// CURSOR SPARK TRAIL
-// ══════════════════════════════════════════════════════
+// rastro de chispas en el cursor — igual que en index.js pero con colores distintos 🎨
+// esto seguro se puede refactorizar en un módulo compartido, pero de momento así va bien
+// ────────────────────────────────
 let lastSpark=0;
 const SC=['#00d4ff','#7c3aed','#00ff88','#fff','#f59e0b'];
 document.addEventListener('mousemove',e=>{
@@ -107,9 +106,9 @@ document.addEventListener('mousemove',e=>{
     el.animate([{opacity:1,transform:'translate(-50%,-50%) scale(1)'},{opacity:0,transform:`translate(calc(-50% + ${(Math.random()-.5)*24}px),calc(-50% + ${(Math.random()-.5)*24}px)) scale(0)`}],{duration:520,fill:'forwards'}).onfinish=()=>el.remove();
 });
 
-// ══════════════════════════════════════════════════════
-// SKILL TAG BURST (click any skill tag)
-// ══════════════════════════════════════════════════════
+// explosión de partículas al hacer clic en un skill tag — pequeño detalle interactivo ✨
+// me lo inventé yo, no lo vi en ningún sitio — ¡esto está guay!
+// ────────────────────────────────
 const BURSTC=['#00d4ff','#7c3aed','#ff4081','#00ff88','#f59e0b','#fff'];
 document.querySelectorAll('.skill-tag').forEach(tag=>{
     tag.addEventListener('click',function(e){
@@ -125,9 +124,9 @@ document.querySelectorAll('.skill-tag').forEach(tag=>{
     });
 });
 
-// ══════════════════════════════════════════════════════
-// INACTIVITY CHARACTER — SVG stick figure with CHAIR
-// ══════════════════════════════════════════════════════
+// personaje de inactividad con figura SVG — aparece si llevas un rato sin interactuar
+// me costó un montón hacer que los estados del SVG cambiaran bien, pero quedó gracioso
+// ────────────────────────────────
 const idleEl=document.getElementById('idle-char');
 const idleBubble=document.getElementById('idle-bubble');
 const cp={
@@ -177,16 +176,15 @@ function resetIdle(){
 ['mousemove','mousedown','keydown','scroll','touchstart'].forEach(ev=>document.addEventListener(ev,resetIdle,{passive:true}));
 resetIdle();
 
-// ══════════════════════════════════════════════════════
-// EGG 1 — GRAVITY: bloques reales de texto de la página caen
-// Activación: doble-clic · escribir "caer"
-// ══════════════════════════════════════════════════════
+// easter egg 1 — los elementos reales de la página caen con físicas
+// se activa con doble clic o escribiendo "caer" — la física de la gravedad la saqué de stackoverflow
+// ────────────────────────────────
 let gravityActive=false;
 function launchGravity(){
     if(gravityActive)return;
     gravityActive=true;
 
-    // Selectores de todos los bloques de texto con contenido real
+    // seleccionamos todos los bloques de texto visibles en la página
     const SEL=[
         '.section-title','.section-label',
         '.timeline-role','.timeline-company','.timeline-date',
@@ -204,7 +202,7 @@ function launchGravity(){
 
     nodes.forEach(el=>{
         const rect=el.getBoundingClientRect();
-        // Saltar si no es visible en el viewport actual
+        // si el elemento no está visible en pantalla lo saltamos — no tiene sentido animarlo
         if(!rect.width||!rect.height)return;
         if(rect.bottom<-60||rect.top>innerHeight+60)return;
 
@@ -213,7 +211,7 @@ function launchGravity(){
             const clone=document.createElement('div');
             clone.className='gravity-char';
             clone.textContent=el.textContent.trim().slice(0,90);
-            // Posición inicial = posición real en pantalla (fixed)
+            // posición inicial = la que tiene en pantalla (fixed para que no se mueva con el scroll)
             clone.style.cssText=`
                 left:${rect.left}px;top:${rect.top}px;
                 font-size:${cs.fontSize};font-weight:${cs.fontWeight};
@@ -225,7 +223,7 @@ function launchGravity(){
 
             let x=rect.left, y=rect.top;
             let vx=(Math.random()-.5)*5;
-            let vy=-(Math.random()*9+2);   // impulso inicial hacia arriba
+            let vy=-(Math.random()*9+2);   // pequeño impulso hacia arriba al principio
             let r=0, rv=(Math.random()-.5)*9;
 
             (function fall(){
@@ -249,9 +247,9 @@ document.addEventListener('click',()=>{
     if(tclickCount>=3){tclickCount=0;launchFireworksRandom();}
 });
 
-// ══════════════════════════════════════════════════════
-// EGG 2 — MATRIX RAIN (Konami code: ↑↑↓↓←→←→BA)
-// ══════════════════════════════════════════════════════
+// easter egg 2 — lluvia matrix con el código Konami ↑↑↓↓←→←→BA 🕹️
+// lo típico que hay que poner en todo portfolio que se precie jaja
+// ────────────────────────────────
 const KONAMI=[38,38,40,40,37,39,37,39,66,65];
 let kIdx=0,matrixInt=null;
 function startMatrix(){
@@ -277,9 +275,9 @@ function stopMatrix(){
     cvs.style.display='none';cvs.getContext('2d').clearRect(0,0,cvs.width,cvs.height);
 }
 
-// ══════════════════════════════════════════════════════
-// EGG 3 — HIRE ME + CONFETTI (type "contratame")
-// ══════════════════════════════════════════════════════
+// easter egg 3 — overlay de contratación con confeti 🎊
+// escribe "contratame" y aparece — el profe de DAW diría que esto es "detalles de UX"
+// ────────────────────────────────
 const CONF_COLS=['#00d4ff','#7c3aed','#ff4081','#00ff88','#f59e0b','#fff'];
 function showHireOverlay(){document.getElementById('hire-overlay').classList.add('show');for(let i=0;i<90;i++)setTimeout(launchConfetti,Math.random()*1200);}
 function closeHire(){document.getElementById('hire-overlay').classList.remove('show');}
@@ -290,9 +288,9 @@ function launchConfetti(){
     el.animate([{transform:`translateY(0) rotate(0deg)`,opacity:1},{transform:`translateY(${innerHeight+20}px) translateX(${(Math.random()-.5)*350}px) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:Math.random()*2000+1400,easing:'cubic-bezier(.25,.46,.45,.94)',fill:'forwards'}).onfinish=()=>el.remove();
 }
 
-// ══════════════════════════════════════════════════════
-// EGG 4 — FIREWORKS (triple-click → posición aleatoria)
-// ══════════════════════════════════════════════════════
+// easter egg 4 — fuegos artificiales con triple clic en posición aleatoria 💥
+// versión simplificada: el triple clic lanza los fuegos en un sitio aleatorio de la pantalla
+// ────────────────────────────────
 const FW_COLS=['#00d4ff','#7c3aed','#ff4081','#00ff88','#f59e0b','#fff','#ff6b6b'];
 function launchFireworksRandom(){
     const x=Math.random()*innerWidth;
@@ -315,9 +313,10 @@ document.addEventListener('dblclick',e=>{
     launchGravity();
 });
 
-// ══════════════════════════════════════════════════════
-// EGG 5 — RETRO TERMINAL CV (press ` or type "terminal")
-// ══════════════════════════════════════════════════════
+// easter egg 5 — terminal retro interactiva
+// esto me llevó más tiempo que todo lo demás junto, pero quedó increíble
+// se abre pulsando ` o escribiendo "terminal"
+// ────────────────────────────────
 const retroOverlay=document.getElementById('retro-overlay');
 const retroBody=document.getElementById('retro-body');
 const retroInput=document.getElementById('retro-input');
@@ -416,9 +415,9 @@ retroInput.addEventListener('keydown',e=>{
     }
 });
 
-// ══════════════════════════════════════════════════════
-// KEYBOARD LISTENER
-// ══════════════════════════════════════════════════════
+// listener global de teclado — centraliza todos los atajos de teclado y easter eggs
+// podría estar más organizado pero de momento me vale así, no sé muy bien cómo refactorizarlo
+// ────────────────────────────────
 let typedBuf='';
 document.addEventListener('keydown',e=>{
     if(e.target===retroInput)return;
@@ -434,16 +433,15 @@ document.addEventListener('keydown',e=>{
     if(typedBuf.includes('gitpush'))    deployVictor();
 });
 
-// ══════════════════════════════════════════════════════
-// PITCH CHARACTER — personaje que aparece cada 60 s
-// incitando a contratar a Víctor con frases persuasivas
-// ══════════════════════════════════════════════════════
+// personaje que aparece cada 60s con frases para que me contraten
+// la idea es un poco agresiva pero el profe dijo que había que diferenciarse
+// ────────────────────────────────
 (function initPitch() {
     const pitchEl  = document.getElementById('pitch-char');
     const pitchBub = document.getElementById('pitch-bubble');
     const pitchSvg = document.getElementById('pitch-svg');
 
-    // Referencias a partes del SVG
+    // partes del SVG del personaje — al principio me liaba con los IDs
     const P = {
         al: document.getElementById('pal'),   // brazo izquierdo
         ar: document.getElementById('par'),   // brazo derecho
@@ -454,7 +452,7 @@ document.addEventListener('keydown',e=>{
         ex: document.getElementById('p-excl'),  // signo !
     };
 
-    // Mensajes + poses
+    // los mensajes y sus poses — me costó bastante equilibrar el tono para que no fuera demasiado pesado
     const PITCHES = [
         { msg:'Estamos hechos el uno para el otro...\ntú con una oferta, yo con código. 💼',      pose:'wide'    },
         { msg:'¿Sabes que me necesitas?\nTu instinto lo sabe. 😏',                                 pose:'hip'     },
@@ -473,12 +471,12 @@ document.addEventListener('keydown',e=>{
     function sp(el, attrs) { Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k,v)); }
 
     function setPose(pose) {
-        // Reset a postura neutral
+        // reseteamos a la postura neutral antes de aplicar la nueva
         sp(P.al, {x1:40,y1:38,x2:22,y2:52});
         sp(P.ar, {x1:40,y1:38,x2:58,y2:52});
         sp(P.ll, {x1:40,y1:62,x2:28,y2:88});
         sp(P.lr, {x1:40,y1:62,x2:52,y2:88});
-        sp(P.mo, {d:'M35,20 Q40,24 45,20'});   // sonrisa
+        sp(P.mo, {d:'M35,20 Q40,24 45,20'});   // sonrisa por defecto
         sp(P.sg, {opacity:0}); sp(P.ex, {opacity:0});
 
         switch (pose) {
@@ -497,7 +495,7 @@ document.addEventListener('keydown',e=>{
                 sp(P.al, {x2:26, y2:48});
                 sp(P.ar, {x2:66, y2:22}); break;
 
-            case 'point':   // señalando hacia el visitante
+            case 'point':   // señalando al visitante directamente
                 sp(P.al, {x2:22, y2:52});
                 sp(P.ar, {x2:70, y2:34}); break;
 
@@ -514,20 +512,20 @@ document.addEventListener('keydown',e=>{
         const p = PITCHES[pitchIdx % PITCHES.length];
         pitchIdx++;
 
-        // Actualizar texto (soporte salto de línea con <br>)
+        // actualizamos el texto del bocadillo (los \n los convertimos en <br>)
         pitchBub.innerHTML = p.msg.replace(/\n/g, '<br>');
         setPose(p.pose);
 
-        // Mostrar
+        // mostramos el personaje
         pitchEl.classList.remove('hide');
         pitchEl.classList.add('show');
 
-        // Wobble de entrada al personaje
+        // animación de entrada con wobble — el void offsetWidth es para forzar el reflow, no sé muy bien por qué funciona pero sin esto no resetea
         pitchSvg.classList.remove('wobble');
         void pitchSvg.offsetWidth; // reflow para resetear animación
         pitchSvg.classList.add('wobble');
 
-        // Auto-ocultar tras 9 segundos
+        // se oculta solo después de 9 segundos
         clearTimeout(hideTimer);
         hideTimer = setTimeout(() => {
             pitchEl.classList.remove('show');
@@ -535,16 +533,16 @@ document.addEventListener('keydown',e=>{
         }, 9000);
     }
 
-    // Primera aparición a los 5 s, luego cada 60 s
+    // primera aparición a los 5 segundos, luego cada 60 segundos
     setTimeout(() => {
         showPitch();
         setInterval(showPitch, 60000);
     }, 5000);
 })();
 
-// ══════════════════════════════════════════════════════
-// 👋 EXIT-INTENT — overlay cuando el ratón sale por arriba
-// ══════════════════════════════════════════════════════
+// exit intent — overlay que aparece cuando el ratón sale por arriba de la página
+// esto lo vi en webs de marketing y me pareció buena idea para retener al visitante
+// ────────────────────────────────
 (function initExitIntent() {
     const overlay = document.getElementById('exit-overlay');
     let shown = false;
@@ -553,25 +551,25 @@ document.addEventListener('keydown',e=>{
     document.addEventListener('mousemove', e => { lastY = e.clientY; });
 
     document.addEventListener('mouseleave', e => {
-        // Solo si sale por la parte superior (hacia barra del navegador)
+        // solo se activa si el ratón sale por la parte superior (hacia la barra del navegador)
         if (shown || e.clientY > 10) return;
         shown = true;
         overlay.classList.add('show');
     });
 
-    // También cerrar con Escape
+    // también se puede cerrar con Escape — lo añadí después porque me pareció importante
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && overlay.classList.contains('show')) {
             overlay.classList.remove('show');
         }
     });
 
-    // Click fuera de la card cierra el overlay
+    // hacer clic fuera de la card cierra el overlay
     overlay.addEventListener('click', e => {
         if (e.target === overlay) overlay.classList.remove('show');
     });
 
-    // Al cerrar el overlay, resetear "shown" tras 3 min para que pueda volver a aparecer
+    // reseteamos "shown" después de 3 minutos para que pueda volver a aparecer si el usuario sigue ahí
     const observer = new MutationObserver(() => {
         if (!overlay.classList.contains('show') && shown) {
             setTimeout(() => { shown = false; }, 180000);
@@ -580,10 +578,9 @@ document.addEventListener('keydown',e=>{
     observer.observe(overlay, { attributes:true, attributeFilter:['class'] });
 })();
 
-// ══════════════════════════════════════════════════════
-// 🔒 HIDDEN EGG — "git push" deploy animation
-// Activa escribiendo "gitpush" (sin espacio) con el teclado
-// ══════════════════════════════════════════════════════
+// easter egg oculto — animación de "git push" al escribir "gitpush" sin espacio
+// se me ocurrió de madrugada y quedó muy bien, me costó lo del timing de los logs
+// ────────────────────────────────
 let deployActive = false;
 function deployVictor() {
     if (deployActive) return;
@@ -594,7 +591,7 @@ function deployVictor() {
     const bar      = document.getElementById('dt-bar');
     const success  = document.getElementById('dt-success');
 
-    // Reset state
+    // reseteamos el estado antes de mostrar de nuevo
     lines.innerHTML = ''; bar.classList.remove('full'); success.style.display = 'none';
     toast.classList.add('show');
 
@@ -619,15 +616,15 @@ function deployVictor() {
         }, t);
     });
 
-    // Progress bar
+    // la barra de progreso empieza cuando llega el "remote"
     setTimeout(() => { bar.classList.add('full'); }, 1900);
 
-    // Success line
+    // mensaje de éxito al final
     setTimeout(() => {
         success.style.display = 'block';
     }, 3300);
 
-    // Auto dismiss
+    // se cierra solo después de un rato
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => {
@@ -637,9 +634,8 @@ function deployVictor() {
     }, 6500);
 }
 
-// ══════════════════════════════════════════════════════
-// HAMBURGER MENU — mobile nav toggle
-// ══════════════════════════════════════════════════════
+// menú hamburguesa para móvil — lo hice al final y casi se me olvida, importante para responsive
+// ────────────────────────────────
 (function() {
     const toggle = document.getElementById('nav-toggle');
     const links  = document.getElementById('nav-links');
@@ -651,7 +647,7 @@ function deployVictor() {
         toggle.setAttribute('aria-expanded', open);
     });
 
-    // Close when a nav link is clicked
+    // al hacer clic en un enlace del menú, se cierra el menú
     links.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
             links.classList.remove('open');
@@ -660,7 +656,7 @@ function deployVictor() {
         });
     });
 
-    // Close on outside click
+    // si haces clic fuera del menú también se cierra
     document.addEventListener('click', e => {
         if (!toggle.contains(e.target) && !links.contains(e.target)) {
             links.classList.remove('open');
@@ -670,15 +666,14 @@ function deployVictor() {
     });
 })();
 
-// ══════════════════════════════════════════════════════
-// PAGE TRANSITIONS
-// ══════════════════════════════════════════════════════
+// transiciones de página — igual que en index.js, lo copié y adapté
+// ────────────────────────────────
 (function() {
     const pt = document.getElementById('page-transition');
 
-    // El overlay arranca en opacity:0 (CSS). Solo se activa al navegar fuera.
+    // el overlay empieza invisible (CSS), solo se activa al navegar fuera
 
-    // Salida: fade a negro y navega
+    // fade a negro al salir de la página
     document.querySelectorAll('a[href]').forEach(link => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto') ||
@@ -691,7 +686,7 @@ function deployVictor() {
         });
     });
 
-    // Seguridad bfcache: guardar overlay transparente antes de cachear
+    // seguridad bfcache — para que no quede la pantalla negra al volver con el botón atrás
     window.addEventListener('pagehide', e => {
         if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
     });

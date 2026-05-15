@@ -17,18 +17,15 @@
 <div id="cursor-ring"></div>
 <canvas id="bg-canvas"></canvas>
 
-<!-- ══════════════════════════════════════════════════════
-     ORBITAL SPEECH BUBBLES SVG
-     viewBox 1200×700  ·  SVG center = (600, 350)
-     Gold  bubble orbits an ellipse rx=270 ry=115 (clockwise)
-     Cyan bubble orbits an ellipse rx=265 ry=108 (counter-clockwise)
-     Comet trails connect each bubble to its respective button
-══════════════════════════════════════════════════════ -->
+<!-- SVG de las burbujas orbitales — lo que más tiempo me llevó de toda la página
+     el centro del viewBox es (600, 350) y cada burbuja sigue una elipse distinta
+     la burbuja dorada va en sentido horario y la cian en antihorario
+     los cometas van del botón a la burbuja y el JS mueve los extremos cada frame -->
 <svg id="orbit-svg" viewBox="0 0 1200 700"
      preserveAspectRatio="xMidYMid meet"
      xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <!-- Blur for glow effects -->
+        <!-- filtros de desenfoque para el efecto de brillo de las burbujas -->
         <filter id="blur-soft" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="16"/>
         </filter>
@@ -36,8 +33,8 @@
             <feGaussianBlur stdDeviation="8"/>
         </filter>
 
-        <!-- Comet trail gradients — x1/y1 = button (transparent),  x2/y2 = bubble (opaque) -->
-        <!-- Updated each frame by JS via setAttribute -->
+        <!-- gradientes de los cometas: el origen (en el botón) es transparente y el extremo (en la burbuja) es opaco -->
+        <!-- el JS actualiza las coordenadas x1/y1/x2/y2 cada frame con setAttribute -->
         <linearGradient id="cg-gold" gradientUnits="userSpaceOnUse"
                         x1="600" y1="320" x2="330" y2="350">
             <stop offset="0%"  stop-color="#cf9b17" stop-opacity="0"/>
@@ -52,7 +49,7 @@
         </linearGradient>
     </defs>
 
-    <!-- Faint orbit ellipse guides -->
+    <!-- elipses guía muy tenues para ver el camino de las órbitas -->
     <ellipse cx="600" cy="350" rx="270" ry="115"
              fill="none" stroke="#cf9b17" stroke-width=".5"
              opacity=".1" stroke-dasharray="4 10"/>
@@ -60,7 +57,7 @@
              fill="none" stroke="#00c8ff"  stroke-width=".5"
              opacity=".1" stroke-dasharray="4 10"/>
 
-    <!-- Comet trails (endpoints updated by JS each frame) -->
+    <!-- líneas de los cometas, el JS mueve sus extremos cada frame -->
     <line id="comet-gold"
           x1="600" y1="320" x2="330" y2="350"
           stroke="url(#cg-gold)" stroke-width="2.8" stroke-linecap="round"/>
@@ -74,21 +71,21 @@
     <circle id="ch-cyan" cx="870" cy="350" r="22"
             fill="#00c8ff"  opacity=".18" filter="url(#blur-med)"/>
 
-    <!-- ══ GOLD BUBBLE WRAPPER (JS sets transform="translate(x,y)") ══ -->
-    <!-- Content is centered at (0,0); JS translates to orbit position  -->
+    <!-- burbuja dorada — el JS le pone el transform cada frame para moverla por la elipse -->
+    <!-- todo el contenido está centrado en (0,0) y el translate lo desplaza a la posición de la órbita -->
     <g id="bw-gold" transform="translate(330,350)">
-        <!-- Ambient soft glow -->
+        <!-- halo de luz suave de fondo -->
         <circle cx="0" cy="0" r="155" fill="#cf9b17" opacity=".07" filter="url(#blur-soft)"/>
-        <!-- Glow ring (blurred stroke behind main circle) -->
+        <!-- anillo de brillo desenfocado detrás del círculo principal -->
         <circle cx="0" cy="0" r="135" fill="none"
                 stroke="#cf9b17" stroke-width="8" opacity=".22" filter="url(#blur-med)"/>
-        <!-- Main bubble circle -->
+        <!-- círculo principal de la burbuja -->
         <circle cx="0" cy="0" r="133" fill="#0b0800" stroke="#cf9b17" stroke-width="1.6"/>
-        <!-- Inner decoration ring -->
+        <!-- anillo decorativo interior -->
         <circle cx="0" cy="0" r="124" fill="none"
                 stroke="#cf9b17" stroke-width=".5" opacity=".32"/>
 
-        <!-- Label -->
+        <!-- etiqueta superior -->
         <text x="0" y="-89"
               text-anchor="middle" font-family="Space Grotesk,sans-serif"
               font-size="9.5" letter-spacing="3.5" fill="#cf9b17" opacity=".72">
@@ -97,7 +94,7 @@
         <line x1="-72" y1="-78" x2="72" y2="-78"
               stroke="#cf9b17" stroke-width=".6" opacity=".3"/>
 
-        <!-- Body text (4 lines, centered vertically in circle) -->
+        <!-- texto del interior de la burbuja -->
         <text text-anchor="middle" font-family="Space Grotesk,sans-serif"
               font-size="14.5" fill="#ecdba0" font-weight="500">
             <tspan x="0" y="-50">Si quieres ver algo</tspan>
@@ -106,32 +103,32 @@
             <tspan x="0" dy="24">o modelaje</tspan>
         </text>
 
-        <!-- Hint -->
+        <!-- pequeña pista en cursiva -->
         <text x="0" y="54"
               text-anchor="middle" font-family="Space Grotesk,sans-serif"
               font-size="11.5" fill="#cf9b17" opacity=".8" font-style="italic">
             haz clic en el botón
         </text>
 
-        <!-- Subtle shine ellipse -->
+        <!-- elipse de brillo sutil en la esquina -->
         <ellipse cx="-32" cy="-68" rx="26" ry="10" fill="#cf9b17" opacity=".06"/>
     </g>
 
 
-    <!-- ══ CYAN BUBBLE WRAPPER ══ -->
+    <!-- burbuja cian — igual que la dorada pero para el perfil de desarrollador -->
     <g id="bw-cyan" transform="translate(870,350)">
-        <!-- Ambient soft glow -->
+        <!-- halo de luz suave -->
         <circle cx="0" cy="0" r="155" fill="#00c8ff" opacity=".07" filter="url(#blur-soft)"/>
-        <!-- Glow ring -->
+        <!-- anillo de brillo -->
         <circle cx="0" cy="0" r="135" fill="none"
                 stroke="#00c8ff" stroke-width="8" opacity=".22" filter="url(#blur-med)"/>
-        <!-- Main bubble circle -->
+        <!-- círculo principal -->
         <circle cx="0" cy="0" r="133" fill="#00101e" stroke="#00c8ff" stroke-width="1.6"/>
-        <!-- Inner ring -->
+        <!-- anillo interior -->
         <circle cx="0" cy="0" r="124" fill="none"
                 stroke="#00c8ff" stroke-width=".5" opacity=".32"/>
 
-        <!-- Label -->
+        <!-- etiqueta superior -->
         <text x="0" y="-89"
               text-anchor="middle" font-family="Space Grotesk,sans-serif"
               font-size="9.5" letter-spacing="3.5" fill="#00c8ff" opacity=".72">
@@ -140,7 +137,7 @@
         <line x1="-72" y1="-78" x2="72" y2="-78"
               stroke="#00c8ff" stroke-width=".6" opacity=".3"/>
 
-        <!-- Body text -->
+        <!-- texto interior -->
         <text text-anchor="middle" font-family="Space Grotesk,sans-serif"
               font-size="14.5" fill="#9fe8ff" font-weight="500">
             <tspan x="0" y="-50">Para ver mis dotes</tspan>
@@ -149,26 +146,26 @@
             <tspan x="0" dy="24">IA &amp; Big Data</tspan>
         </text>
 
-        <!-- Hint -->
+        <!-- pista en cursiva -->
         <text x="0" y="54"
               text-anchor="middle" font-family="Space Grotesk,sans-serif"
               font-size="11.5" fill="#00c8ff" opacity=".8" font-style="italic">
             haz clic en el botón
         </text>
 
-        <!-- Shine -->
+        <!-- brillo sutil -->
         <ellipse cx="-32" cy="-68" rx="26" ry="10" fill="#00c8ff" opacity=".06"/>
     </g>
 
 
-    <!-- Name + decorative line -->
+    <!-- nombre centrado con línea decorativa debajo -->
     <text x="600" y="76" class="name-svg" id="name-svg-el">VÍCTOR BLEDA BENEYTO</text>
     <line x1="498" y1="87" x2="702" y2="87"
           stroke="rgba(255,255,255,.1)" stroke-width=".8"/>
 </svg>
 
 
-<!-- ── Mobile title (visible only when SVG is hidden) ── -->
+<!-- título alternativo para móvil — el SVG orbital se oculta en pantallas pequeñas -->
 <div id="mobile-name">
     <h1>VÍCTOR BLEDA<br>BENEYTO</h1>
     <p>Actor · Modelo · Desarrollador</p>

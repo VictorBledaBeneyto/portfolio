@@ -1,4 +1,4 @@
-        /* Animaciones */
+        /* animaciones de entrada para el hero */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -33,7 +33,7 @@
             animation: kenBurns 20s ease-out infinite alternate;
         }
 
-        /* Comportamiento general */
+        /* estilos generales de comportamiento de la página */
         html {
             scroll-behavior: smooth;
         }
@@ -55,7 +55,7 @@
             background: #555;
         }
 
-        /* Utilidades */
+        /* clases para ocultar la scrollbar cuando no hace falta */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
@@ -74,8 +74,7 @@
             scrollbar-width: none;
         }
 
-        /* Galería */
-        /* Galería Responsive */
+        /* galería masonry responsive — columnas que cambian según el ancho */
         .masonry-grid {
             column-count: 1;
             /* 1 columna en móvil */
@@ -92,7 +91,7 @@
         @media (min-width: 1024px) {
             .masonry-grid {
                 column-count: 3;
-                /* 3 columnas en computadoras */
+                /* 3 columnas en escritorio */
             }
         }
 
@@ -128,7 +127,7 @@
             }
         }
 
-        /* ─── Spotlight cursor ───────────────────────────── */
+        /* foco de luz que sigue al cursor — efecto teatral, me salió bastante bien */
         #spotlight {
             position: fixed;
             inset: 0;
@@ -138,7 +137,7 @@
         }
         @media (max-width: 768px) { #spotlight { display: none; } }
 
-        /* ─── Page transition overlay ─────────────────────── */
+        /* overlay de transición entre páginas — empieza invisible */
         #page-transition {
             position: fixed;
             inset: 0;
@@ -149,7 +148,7 @@
             transition: opacity .45s ease;
         }
 
-        /* ─── Scroll reveal ──────────────────────────────── */
+        /* animación de aparición al hacer scroll con IntersectionObserver */
         [data-reveal] {
             opacity: 0;
             transform: translateY(32px);
@@ -163,14 +162,14 @@
         }
         [data-reveal-left].visible { opacity: 1; transform: none; }
 
-        /* ─── Stats / counters bar ───────────────────────── */
+        /* barra de estadísticas — los números tienen ancho fijo para que no salten */
         #stats-bar .stat-num {
             font-variant-numeric: tabular-nums;
             min-width: 2ch;
             display: inline-block;
         }
 
-        /* ─── Film strip gallery ─────────────────────────── */
+        /* galería en formato tira de película — esto fue lo que más trabajo me llevó */
         .film-strip-wrapper {
             position: relative;
             background: #080808;
@@ -240,7 +239,7 @@
             pointer-events: none;
         }
 
-        /* ─── Clapperboard easter egg ────────────────────── */
+        /* estilos del easter egg de la claqueta — escribir "escena" para activarlo */
         #clapper-overlay {
             position: fixed;
             inset: 0;
@@ -312,13 +311,13 @@
             letter-spacing: .06em;
         }
 
-        /* ─── Responsive extras ──────────────────────────── */
+        /* ajustes responsive para pantallas pequeñas */
         @media (max-width: 640px) {
-            /* Film strip: smaller frames on phones */
+            /* frames más pequeños en móvil para que quepan bien */
             .film-frame { flex: 0 0 200px; }
             .film-frame img { height: 280px; }
             .film-strip-wrapper { padding: 22px 0; }
-            /* Clapperboard: full-width on phones */
+            /* claqueta más ancha en móvil */
             .clapper-board { width: 90vw; max-width: 280px; }
             .clapper-accion { font-size: 2.4rem; }
         }

@@ -14,14 +14,14 @@
             cursor: none;
         }
 
-        /* ─── Custom cursor ───────────────────────────────── */
+        /* cursor personalizado — punto que va directo y anillo que va con retardo */
         #cursor-dot  { position:fixed;width:7px;height:7px;background:white;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference; }
         #cursor-ring { position:fixed;width:30px;height:30px;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s,top .12s,transform .2s; }
 
-        /* ─── Background canvas ───────────────────────────── */
+        /* canvas de fondo para las partículas flotantes */
         #bg-canvas { position:fixed;inset:0;z-index:0; }
 
-        /* ─── SVG layer ───────────────────────────────────── */
+        /* capa del SVG con las órbitas, encima del canvas */
         #orbit-svg {
             position:fixed;inset:0;
             width:100%;height:100%;
@@ -32,7 +32,7 @@
             fill:rgba(255,255,255,.3);letter-spacing:.6em;text-anchor:middle;
         }
 
-        /* ─── Buttons layer ───────────────────────────────── */
+        /* capa de los botones, la pongo encima del SVG con z-index:2 */
         #buttons-layer {
             position:fixed;inset:0;z-index:2;
             display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -70,7 +70,7 @@
         .btn-icon { font-size:22px; }
         #btn-sep { width:1px;height:16px;background:linear-gradient(to bottom,var(--gold),var(--cyan));opacity:.35;pointer-events:none; }
 
-        /* ─── Inactivity character ────────────────────────── */
+        /* personaje SVG de inactividad — aparece si llevas rato sin hacer nada */
         #idle-char {
             position:fixed;bottom:24px;right:24px;z-index:100;
             display:flex;flex-direction:column;align-items:center;gap:10px;
@@ -90,7 +90,7 @@
             border:8px solid transparent;border-top-color:rgba(15,20,35,.95);border-bottom:0;
         }
 
-        /* ─── Hint (visible + pulsing) ────────────────────── */
+        /* pista de la terminal — pulsa suavemente para llamar la atención */
         #hint {
             position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
             color:rgba(255,255,255,.82);font-size:11px;letter-spacing:.16em;
@@ -104,7 +104,7 @@
             50%      { opacity:1;   box-shadow:0 0 20px rgba(207,155,23,.25),0 0 20px rgba(0,200,255,.15); }
         }
 
-        /* ─── Easter egg overlays ─────────────────────────── */
+        /* overlays de los easter eggs */
         #matrix-canvas { position:fixed;inset:0;z-index:200;display:none;pointer-events:none; }
         #hire-overlay {
             position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.93);
@@ -128,7 +128,7 @@
         }
         .hire-close:hover { background:rgba(255,255,255,.1);color:#fff; }
 
-        /* ─── Retro terminal ──────────────────────────────── */
+        /* terminal retro — las líneas de scanlines las saqué de un tutorial de css-tricks */
         #retro-overlay {
             position:fixed;inset:0;z-index:250;background:#000;
             display:none;flex-direction:column;padding:0;overflow:hidden;
@@ -168,20 +168,20 @@
         .retro-line.err { color:#ff4444; } .retro-line.sys { color:#888; }
         .retro-line.hi  { color:#00cfff; }
 
-        /* ─── Misc effects ────────────────────────────────── */
+        /* clases para confetti, sparks y letras con gravedad */
         .confetti     { position:fixed;top:-12px;pointer-events:none;z-index:400; }
         .spark        { position:fixed;border-radius:50%;pointer-events:none;z-index:50;transform:translate(-50%,-50%); }
         .gravity-char { position:fixed;pointer-events:none;z-index:500;font-weight:700;will-change:transform; }
         .fw-particle  { position:fixed;border-radius:50%;pointer-events:none;z-index:450; }
 
-        /* ─── Page transition overlay ─────────────────────── */
+        /* overlay de transición entre páginas — empieza invisible para evitar pantalla negra */
         #page-transition {
             position:fixed;inset:0;background:#020206;
             z-index:9999;pointer-events:none;
             opacity:0;transition:opacity .45s ease;
         }
 
-        /* ─── Mobile name (shown when SVG is hidden) ─────── */
+        /* nombre alternativo en móvil — se muestra cuando el SVG orbital está oculto */
         #mobile-name {
             display:none;
             position:fixed;top:0;left:0;right:0;z-index:3;
@@ -197,21 +197,21 @@
             color:rgba(207,155,23,.7);margin-top:10px;
         }
 
-        /* ─── Mobile ──────────────────────────────────────── */
+        /* responsive para móvil — breakpoint principal en 768px */
         @media (max-width:768px) {
             #orbit-svg { display:none; }
             #mobile-name { display:block; }
             body { cursor:auto; }
             #cursor-dot, #cursor-ring { display:none; }
-            /* Buttons fit small screens */
+            /* botones que caben en pantallas pequeñas */
             .btn { min-width:0; width:min(88vw,340px); font-size:clamp(12px,3.8vw,16px); padding:0 18px; height:58px; }
-            /* Hint: simpler for touch */
+            /* el hint queda más compacto en móvil */
             #hint {
                 font-size:9.5px; padding:5px 14px; letter-spacing:.08em;
                 white-space:normal; text-align:center; width:88vw;
                 bottom:14px;
             }
-            /* Idle char: smaller on mobile */
+            /* el personaje de inactividad más pequeño en móvil */
             #idle-char { right:12px; bottom:60px; }
         }
 

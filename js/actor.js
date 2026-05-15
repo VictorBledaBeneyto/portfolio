@@ -1,10 +1,11 @@
-        // ── Spotlight cursor (foco teatral) ───────────────────
+        // spotlight del cursor — simula un foco teatral que sigue al ratón, me salió bastante chulo
         const spotlight = document.getElementById('spotlight');
         let spotX = window.innerWidth / 2;
         let spotY = window.innerHeight / 2;
         let targetX = spotX, targetY = spotY;
 
         function updateSpotlight() {
+            // interpolación suave — lo mismo que el cursor ring de index.js, esto ya lo tenía controlado
             spotX += (targetX - spotX) * 0.09;
             spotY += (targetY - spotY) * 0.09;
             spotlight.style.background =
@@ -15,16 +16,17 @@
             requestAnimationFrame(updateSpotlight);
         }
         document.addEventListener('mousemove', e => { targetX = e.clientX; targetY = e.clientY; });
-        // Fade out spotlight when lightbox is open (fotos a pantalla completa)
+        // cuando se cierra el lightbox volvemos a mostrar el spotlight — me olvidé esto al principio
         document.getElementById('close-lightbox').addEventListener('click', () => spotlight.style.opacity = '1');
         updateSpotlight();
 
-        // ── Transiciones entre páginas ────────────────────────
+        // transiciones entre páginas — igual que en index.js, lo reutilicé
+        // ────────────────────────────────
         const pt = document.getElementById('page-transition');
 
-        // El overlay arranca en opacity:0 (CSS). Solo se activa al navegar fuera.
+        // el overlay empieza invisible gracias al CSS, solo se activa al salir de la página
 
-        // Salida: fade a negro y navega
+        // fade a negro al hacer clic en un enlace interno y luego navega
         document.querySelectorAll('a[href]').forEach(link => {
             const href = link.getAttribute('href');
             if (!href || href.startsWith('#') || href.startsWith('mailto') ||
@@ -37,7 +39,7 @@
             });
         });
 
-        // Seguridad bfcache: guardar overlay transparente antes de cachear
+        // bfcache: si el navegador cachea la página, reseteamos el overlay para que no quede negro
         window.addEventListener('pagehide', e => {
             if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
         });
@@ -45,7 +47,7 @@
             if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
         });
 
-        // Configuración del Lightbox (Galería)
+        // configuración del lightbox para la galería de fotos — tardé bastante en que funcionara bien
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const closeBtn = document.getElementById('close-lightbox');
@@ -84,9 +86,9 @@
         nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-        // ══════════════════════════════════════════════════════
-        // SCROLL REVEAL — section headings + table rows
-        // ══════════════════════════════════════════════════════
+        // scroll reveal para títulos y filas de tabla — esto lo aprendí en clase de interfaces
+        // IntersectionObserver mola mucho, antes lo hacía con scroll events y era un desastre
+        // ────────────────────────────────
         (function () {
             const obs = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
@@ -97,13 +99,13 @@
                 });
             }, { threshold: 0.12 });
 
-            // Section headings reveal from below
+            // los títulos de sección aparecen desde abajo
             document.querySelectorAll('#cv h3, #gallery h2, #gallery h3, #contact h2, #bio h2, #bio h1').forEach(el => {
                 el.setAttribute('data-reveal', '');
                 obs.observe(el);
             });
 
-            // Table rows reveal from the left with stagger
+            // las filas de la tabla aparecen desde la izquierda con un pequeño delay escalonado
             document.querySelectorAll('tbody tr').forEach((row, i) => {
                 row.setAttribute('data-reveal-left', '');
                 row.style.transitionDelay = (i % 8) * 0.055 + 's';
@@ -111,9 +113,9 @@
             });
         })();
 
-        // ══════════════════════════════════════════════════════
-        // ANIMATED COUNTERS — count up when stats bar enters view
-        // ══════════════════════════════════════════════════════
+        // contadores animados — cuando el usuario llega a la sección de stats, los números suben
+        // esto lo vi en un video de YouTube y me pareció una pasada para dar vida a la página
+        // ────────────────────────────────
         (function () {
             const cObs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -133,9 +135,9 @@
             document.querySelectorAll('.counter').forEach(el => cObs.observe(el));
         })();
 
-        // ══════════════════════════════════════════════════════
-        // FILM STRIP — convierte todos los masonry de galería
-        // ══════════════════════════════════════════════════════
+        // film strip para la galería — convierte el masonry en una tira de película 🎞️
+        // esto fue lo que más tiempo me llevó de toda la página, pero quedó genial
+        // ────────────────────────────────
         (function () {
             function buildFilmStrip(masonryId) {
                 const masonry = document.getElementById(masonryId);
@@ -143,11 +145,11 @@
                 const imgs = Array.from(masonry.querySelectorAll('.masonry-item img'));
                 if (!imgs.length) return;
 
-                // Wrapper
+                // contenedor principal del film strip
                 const wrapper = document.createElement('div');
                 wrapper.className = 'film-strip-wrapper';
 
-                // Perforations top + bottom
+                // perforaciones arriba y abajo — el detalle que más mola del diseño
                 ['film-perfs film-perfs-top', 'film-perfs film-perfs-bottom'].forEach(cls => {
                     const perf = document.createElement('div');
                     perf.className = cls;
@@ -155,7 +157,7 @@
                     wrapper.appendChild(perf);
                 });
 
-                // Scrollable track
+                // track horizontal donde van los fotogramas
                 const track = document.createElement('div');
                 track.className = 'film-track';
 
@@ -168,7 +170,7 @@
                     newImg.alt = origImg.alt || (masonryId + ' ' + (i + 1));
                     newImg.loading = 'lazy';
 
-                    // Open lightbox — find original in galleryImages by src
+                    // al hacer clic en la foto del film strip abrimos el lightbox con la misma imagen
                     newImg.addEventListener('click', () => {
                         const idx = galleryImages.findIndex(gi => gi.src === newImg.src);
                         showImage(idx !== -1 ? idx : 0);
@@ -190,11 +192,11 @@
 
                 wrapper.appendChild(track);
 
-                // Hide original masonry, insert film strip
+                // ocultamos el masonry original y ponemos el film strip en su lugar
                 masonry.style.display = 'none';
                 masonry.parentElement.appendChild(wrapper);
 
-                // Drag-to-scroll (mouse)
+                // arrastrar con el ratón para scrollear — lo saqué de stackoverflow, no sé muy bien por qué funciona pero funciona
                 let isDown = false, startX, scrollLeft;
                 track.addEventListener('mousedown', e => {
                     isDown = true;
@@ -208,7 +210,7 @@
                     e.preventDefault();
                     track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.4;
                 });
-                // Touch
+                // también funciona con táctil para móvil — importante no olvidarse del touch
                 let txStart, slStart;
                 track.addEventListener('touchstart', e => { txStart = e.touches[0].pageX; slStart = track.scrollLeft; });
                 track.addEventListener('touchmove', e => { track.scrollLeft = slStart + (txStart - e.touches[0].pageX); });
@@ -219,15 +221,15 @@
             buildFilmStrip('masonry-headshots');
         })();
 
-        // ══════════════════════════════════════════════════════
-        // CLAPPERBOARD EASTER EGG — type "escena"
-        // ══════════════════════════════════════════════════════
+        // easter egg: claqueta de director — escribe "escena" para activarlo
+        // la idea se me ocurrió porque es la página de actor, tenía que haber algo teatral
+        // ────────────────────────────────
         (function () {
             const WORD = 'escena';
             let typed = '';
             let toma = 0;
 
-            // Frases del director — rotan con cada toma
+            // frases del director — rotan con cada toma, me lo pasé bien escribiéndolas
             const FRASES = [
                 { accion: '¡ACCIÓN!',           dir: 'TÚ' },
                 { accion: '¡Más emoción!',       dir: 'Spielberg (modo fan)' },
@@ -259,7 +261,7 @@
 
                     const frase = FRASES[(toma - 1) % FRASES.length];
 
-                    // Actualizar claqueta
+                    // actualizamos los datos de la claqueta con la toma actual
                     sceneEl.textContent = String(Math.ceil(toma / FRASES.length)).padStart(3, '0');
                     tomaEl.textContent  = ((toma - 1) % FRASES.length) + 1;
                     dirEl.textContent   = frase.dir;
@@ -267,7 +269,7 @@
 
                     overlay.classList.add('show');
 
-                    // Animaciones
+                    // la animación del golpe de claqueta — tardé en que el timing quedara natural
                     topEl.classList.remove('snap');
                     accionEl.classList.remove('flash');
                     accionEl.style.opacity = '0';
@@ -282,7 +284,8 @@
             overlay.addEventListener('click', () => overlay.classList.remove('show'));
         })();
 
-        // FUNCIÓN DE DESCARGA DEFINITIVA (MÉTODO DE CLONACIÓN)
+        // función para descargar el CV en PDF — esto fue lo más frustrante de todo el proyecto 😤
+        // tuve mil problemas con los errores de CORS con las imágenes, al final así es como funciona
         function descargarCV() {
             console.log("Iniciando descarga...");
             const elemento = document.getElementById('cv-template');
@@ -292,7 +295,7 @@
                 return;
             }
 
-            // OPCIONES OPTIMIZADAS PARA EVITAR EL ERROR DE SEGURIDAD
+            // opciones de html2pdf — cada parámetro lo fui ajustando a prueba y error
             const opciones = {
                 margin: 0,
                 filename: 'CV_Victor_Bleda.pdf',
@@ -300,9 +303,9 @@
                 html2canvas: {
                     scale: 2,
                     useCORS: true,
-                    allowTaint: false, // Esto permite usar imágenes aunque "manchen" el canvas
+                    allowTaint: false, // esto permite usar imágenes aunque "manchen" el canvas
                     letterRendering: true,
-                    logging: true, // Para ver errores detallados en consola
+                    logging: true, // para ver errores detallados en consola
                     scrollY: 0
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -314,7 +317,7 @@
                 .save()
                 .catch(err => {
                     console.error("Error detallado:", err);
-                    // Si falla por la foto, intentamos avisar
+                    // si falla por la foto avisamos al usuario — me pasó muchas veces en local
                     if (err.message.includes('toDataURL')) {
                         alert("Error de seguridad con la foto. Prueba a subir la web a un servidor o usa un servidor local (Live Server).");
                     }

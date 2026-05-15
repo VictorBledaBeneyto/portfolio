@@ -1,15 +1,15 @@
 'use strict';
 
-// ══════════════════════════════════════════════════════
-// PAGE TRANSITIONS
-// ══════════════════════════════════════════════════════
+// transiciones de página — lo vi en un tutorial de YouTube y quedó guay
+// ────────────────────────────────
 (function() {
     const pt = document.getElementById('page-transition');
 
-    // El overlay arranca en opacity:0 (CSS). Solo se activa al navegar fuera.
-    // Esto evita pantalla negra tanto en carga fresca como en restauración bfcache.
+    // el overlay empieza invisible (lo hace el CSS, no el JS)
+    // así no hay pantalla negra ni al cargar ni al volver con el botón atrás
+    // tardé un rato en entender el bfcache pero creo que lo pillé
 
-    // Salida: fade a negro y navega
+    // cuando haces clic en un enlace interno: fade a negro y luego navega
     document.querySelectorAll('a[href]').forEach(link => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto') ||
@@ -22,7 +22,8 @@
         });
     });
 
-    // Seguridad bfcache: guardar overlay transparente antes de cachear
+    // esto del bfcache me lo explicó el profe y no entendí mucho
+    // pero básicamente si el navegador guarda la página en caché hay que resetear el overlay
     window.addEventListener('pagehide', e => {
         if (e.persisted) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
     });
@@ -31,9 +32,8 @@
     });
 })();
 
-// ══════════════════════════════════════════════════════
-// CONSOLE SIGNATURE
-// ══════════════════════════════════════════════════════
+// mensaje en la consola para curiosos — me hizo gracia ponerlo
+// ────────────────────────────────
 console.log('%c👾 Hola, curioso/a!','color:#00c8ff;font-size:22px;font-weight:bold;');
 console.log(
     '%c¿Revisando el código fuente? Me gusta tu estilo.\n\n' +
@@ -44,17 +44,16 @@ console.log(
     'color:#94a3b8;font-size:13px;line-height:2;font-family:monospace;'
 );
 
-// ══════════════════════════════════════════════════════
-// EMAIL OBFUSCATION
-// ══════════════════════════════════════════════════════
+// ofuscación del email — para que los bots no lo raspen tan fácil
+// lo aprendí en clase de seguridad web, no sé si es 100% efectivo pero algo es algo
+// ────────────────────────────────
 document.querySelectorAll('.email-obf').forEach(el => {
     el.textContent = el.dataset.u + '@' + el.dataset.d;
     el.addEventListener('click', () => { window.location.href = 'mailto:' + el.dataset.u + '@' + el.dataset.d; });
 });
 
-// ══════════════════════════════════════════════════════
-// CURSOR
-// ══════════════════════════════════════════════════════
+// cursor personalizado — esto mola mucho, me costó bastante que quedara suave 😤
+// ────────────────────────────────
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 let mx = 0, my = 0;
@@ -65,6 +64,7 @@ document.addEventListener('mousemove', e => {
 (function moveCursorRing() {
     const rx = parseFloat(ring.style.left || 0);
     const ry = parseFloat(ring.style.top  || 0);
+    // interpolación lineal para que el anillo vaya con retardo — ¡esto está guay!
     ring.style.left = (rx + (mx - rx) * .18) + 'px';
     ring.style.top  = (ry + (my - ry) * .18) + 'px';
     requestAnimationFrame(moveCursorRing);
@@ -74,9 +74,9 @@ document.querySelectorAll('.btn').forEach(b => {
     b.addEventListener('mouseleave', () => ring.style.transform = 'translate(-50%,-50%) scale(1)');
 });
 
-// ══════════════════════════════════════════════════════
-// BACKGROUND PARTICLES
-// ══════════════════════════════════════════════════════
+// partículas de fondo — esto seguro se puede hacer mejor pero funciona bien
+// vi algo parecido en un video de YouTube y lo adapté a mi estilo
+// ────────────────────────────────
 (function () {
     const c   = document.getElementById('bg-canvas');
     const ctx = c.getContext('2d');
@@ -104,41 +104,40 @@ document.querySelectorAll('.btn').forEach(b => {
     })();
 })();
 
-// ══════════════════════════════════════════════════════
-// ORBITAL ANIMATION — bubbles orbit around buttons
-// Each bubble travels an ellipse; comet trails connect
-// each bubble back to its respective button.
-// ══════════════════════════════════════════════════════
+// animación orbital — las burbujas giran alrededor de los botones en elipses
+// me costó bastante pero quedó bien, la parte del mouse-proximity la saqué de stackoverflow
+// básicamente cada burbuja recorre una elipse y hay un "cometa" que la conecta con su botón
+// ────────────────────────────────
 const SVG_EL  = document.getElementById('orbit-svg');
 const SVG_CX  = 600, SVG_CY = 350;
-const RX_GOLD = 270, RY_GOLD = 115;   // gold ellipse semi-axes
-const RX_CYAN = 265, RY_CYAN = 108;   // cyan ellipse semi-axes
-const SPD_GOLD =  0.0015;              // rad / frame  (clockwise)
-const SPD_CYAN = -0.001;               // rad / frame  (counter-clockwise)
+const RX_GOLD = 270, RY_GOLD = 115;   // semi-ejes de la elipse dorada
+const RX_CYAN = 265, RY_CYAN = 108;   // semi-ejes de la elipse cyan
+const SPD_GOLD =  0.0015;              // rad / frame  (sentido horario)
+const SPD_CYAN = -0.001;               // rad / frame  (sentido antihorario)
 
-let angleGold = Math.PI;              // gold starts at left (π)
-let angleCyan = 0;                    // cyan starts at right (0)
+let angleGold = Math.PI;              // el dorado empieza a la izquierda (π)
+let angleCyan = 0;                    // el cyan empieza a la derecha (0)
 
-// Covert a screen point to SVG user-space coordinates
+// convierte coordenadas de pantalla al sistema del SVG — no sé muy bien por qué pero funciona
 function screenToSVG(sx, sy) {
     const pt = SVG_EL.createSVGPoint();
     pt.x = sx; pt.y = sy;
     return pt.matrixTransform(SVG_EL.getScreenCTM().inverse());
 }
 
-// Track mouse in SVG space for bubble proximity effect
+// seguimos el ratón en coordenadas SVG para el efecto de proximidad
 let mouseInSVG = { x: SVG_CX, y: SVG_CY };
 document.addEventListener('mousemove', e => {
     mouseInSVG = screenToSVG(e.clientX, e.clientY);
 });
 
-// Get the centre of a button in SVG coordinates
+// obtiene el centro de un botón en coordenadas SVG
 function getBtnCenter(id) {
     const r = document.getElementById(id).getBoundingClientRect();
     return screenToSVG(r.left + r.width / 2, r.top + r.height / 2);
 }
 
-// Cache button positions; refresh on resize
+// guardo las posiciones de los botones y las actualizo al hacer resize
 let BTN_ART = { x: SVG_CX, y: SVG_CY - 33 };
 let BTN_DEV = { x: SVG_CX, y: SVG_CY + 33 };
 function refreshBtnPos() {
@@ -147,11 +146,11 @@ function refreshBtnPos() {
         BTN_DEV = getBtnCenter('btn-dev');
     } catch(e) {}
 }
-// Wait for layout before first read
+// espero al primer frame para que el layout ya esté calculado
 requestAnimationFrame(refreshBtnPos);
 window.addEventListener('resize', refreshBtnPos);
 
-// SVG element references
+// referencias a los elementos SVG — son muchos pero cada uno tiene su función
 const bwGold  = document.getElementById('bw-gold');
 const bwCyan  = document.getElementById('bw-cyan');
 const ctGold  = document.getElementById('comet-gold');
@@ -161,7 +160,7 @@ const chCyan  = document.getElementById('ch-cyan');
 const cgGold  = document.getElementById('cg-gold');
 const cgCyan  = document.getElementById('cg-cyan');
 
-// Helper: set all four coords on a <line> or gradient
+// helper para setear las cuatro coordenadas de una línea o gradiente de una vez
 function setCoords(el, x1, y1, x2, y2) {
     el.setAttribute('x1', x1.toFixed(1));
     el.setAttribute('y1', y1.toFixed(1));
@@ -170,13 +169,13 @@ function setCoords(el, x1, y1, x2, y2) {
 }
 
 (function animOrbits() {
-    // Current bubble positions (before advancing angle)
+    // posición actual de cada burbuja (antes de avanzar el ángulo)
     const gxCur = SVG_CX + RX_GOLD * Math.cos(angleGold);
     const gyCur = SVG_CY + RY_GOLD * Math.sin(angleGold);
     const cxCur = SVG_CX + RX_CYAN * Math.cos(angleCyan);
     const cyCur = SVG_CY + RY_CYAN * Math.sin(angleCyan);
 
-    // Mouse-proximity speed factor: bubbles slow when cursor is within PULL units
+    // si el cursor se acerca a una burbuja, esta se ralentiza — ¡me salió bastante chulo! ✨
     const PULL = 150;
     const dGold = Math.hypot(gxCur - mouseInSVG.x, gyCur - mouseInSVG.y);
     const dCyan = Math.hypot(cxCur - mouseInSVG.x, cyCur - mouseInSVG.y);
@@ -186,36 +185,36 @@ function setCoords(el, x1, y1, x2, y2) {
     angleGold += SPD_GOLD * fGold;
     angleCyan += SPD_CYAN * fCyan;
 
-    // Bubble positions on their ellipses
+    // posición actualizada de cada burbuja en su elipse
     const gx = SVG_CX + RX_GOLD * Math.cos(angleGold);
     const gy = SVG_CY + RY_GOLD * Math.sin(angleGold);
     const cx = SVG_CX + RX_CYAN * Math.cos(angleCyan);
     const cy = SVG_CY + RY_CYAN * Math.sin(angleCyan);
 
-    // Move bubble wrappers
+    // movemos los contenedores de cada burbuja
     bwGold.setAttribute('transform', `translate(${gx.toFixed(2)},${gy.toFixed(2)})`);
     bwCyan.setAttribute('transform', `translate(${cx.toFixed(2)},${cy.toFixed(2)})`);
 
-    // Comet trails — FROM button (transparent) TO bubble (bright)
+    // cola de cometa: va desde el botón (transparente) hasta la burbuja (brillante)
     const ax = BTN_ART.x, ay = BTN_ART.y;
     const dx = BTN_DEV.x, dy = BTN_DEV.y;
 
     setCoords(ctGold, ax, ay, gx, gy);
-    setCoords(cgGold, ax, ay, gx, gy);   // gradient matches line
+    setCoords(cgGold, ax, ay, gx, gy);   // el gradiente tiene que coincidir con la línea
 
     setCoords(ctCyan, dx, dy, cx, cy);
     setCoords(cgCyan, dx, dy, cx, cy);
 
-    // Glow head circles follow the bubble
+    // la cabeza brillante del cometa sigue a la burbuja
     chGold.setAttribute('cx', gx.toFixed(2)); chGold.setAttribute('cy', gy.toFixed(2));
     chCyan.setAttribute('cx', cx.toFixed(2)); chCyan.setAttribute('cy', cy.toFixed(2));
 
     requestAnimationFrame(animOrbits);
 })();
 
-// ══════════════════════════════════════════════════════
-// INACTIVITY CHARACTER
-// ══════════════════════════════════════════════════════
+// personaje de inactividad — aparece si llevas rato sin hacer nada
+// la idea se me ocurrió viendo un juego idle, me hizo mucha gracia hacerlo
+// ────────────────────────────────
 const idleEl     = document.getElementById('idle-char');
 const idleBubble = document.getElementById('idle-bubble');
 const cp = {
@@ -266,9 +265,8 @@ function resetIdle(){
 );
 resetIdle();
 
-// ══════════════════════════════════════════════════════
-// CURSOR SPARK TRAIL
-// ══════════════════════════════════════════════════════
+// rastro de chispas en el cursor — esto podría optimizarse pero queda muy bien 😄
+// ────────────────────────────────
 let lastSpark=0;
 const SPARK_COLS=['#cf9b17','#00c8ff','#ffffff','#ff9f1c','#b57fff'];
 document.addEventListener('mousemove',e=>{
@@ -282,9 +280,9 @@ document.addEventListener('mousemove',e=>{
     ],{duration:520,fill:'forwards'}).onfinish=()=>el.remove();
 });
 
-// ══════════════════════════════════════════════════════
-// EGG 1 — GRAVITY LETTERS  (triple-click · type "caer")
-// ══════════════════════════════════════════════════════
+// easter egg 1 — letras con gravedad
+// se activa con triple clic o escribiendo "caer" — me costó lo de la física pero quedó bien
+// ────────────────────────────────
 let gravityActive=false;
 function launchGravity(){
     if(gravityActive)return;gravityActive=true;
@@ -316,9 +314,9 @@ document.addEventListener('click',()=>{
     if(tclickCount>=3){tclickCount=0;launchGravity();}
 });
 
-// ══════════════════════════════════════════════════════
-// EGG 2 — MATRIX RAIN  (Konami ↑↑↓↓←→←→BA)
-// ══════════════════════════════════════════════════════
+// easter egg 2 — lluvia matrix con el código Konami 🕹️
+// ↑↑↓↓←→←→BA — lo típico, esto lo vi en un tutorial y había que ponerlo
+// ────────────────────────────────
 const KONAMI=[38,38,40,40,37,39,37,39,66,65];
 let kIdx=0,matrixInt=null;
 function startMatrix(){
@@ -339,9 +337,9 @@ function stopMatrix(){
     cvs.style.display='none';cvs.getContext('2d').clearRect(0,0,cvs.width,cvs.height);
 }
 
-// ══════════════════════════════════════════════════════
-// EGG 3 — HIRE ME + CONFETTI  (type "contratame")
-// ══════════════════════════════════════════════════════
+// easter egg 3 — overlay de contratación con confeti 🎊
+// si escribes "contratame" aparece esto — la idea me la dio el profe de interfaces
+// ────────────────────────────────
 const CONF_COLS=['#cf9b17','#00c8ff','#ff4081','#7c3aed','#69f0ae','#fff','#ff9f1c'];
 function showHireOverlay(){
     document.getElementById('hire-overlay').classList.add('show');
@@ -358,9 +356,9 @@ function launchConfetti(){
     ],{duration:Math.random()*2000+1400,easing:'cubic-bezier(.25,.46,.45,.94)',fill:'forwards'}).onfinish=()=>el.remove();
 }
 
-// ══════════════════════════════════════════════════════
-// EGG 4 — FIREWORKS  (double-click)
-// ══════════════════════════════════════════════════════
+// easter egg 4 — fuegos artificiales con doble clic 💥
+// no sé muy bien las matemáticas del ángulo pero stackoverflow me ayudó bastante
+// ────────────────────────────────
 const FW_COLS=['#cf9b17','#00c8ff','#ff4081','#b57fff','#69f0ae','#fff','#ff9f1c','#ff6b6b'];
 function launchFireworks(x,y){
     const NUM=24;
@@ -375,6 +373,7 @@ function launchFireworks(x,y){
             {transform:`translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px)) scale(0)`,opacity:0}
         ],{duration:500+Math.random()*400,easing:'ease-out',fill:'forwards'}).onfinish=()=>el.remove();
     }
+    // segunda ola más pequeña con un pequeño retardo — detalle chulo
     for(let i=0;i<8;i++) setTimeout(()=>{
         const el=document.createElement('div');
         el.style.cssText=`position:fixed;left:${x}px;top:${y}px;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:450;transform:translate(-50%,-50%);`;
@@ -388,9 +387,10 @@ document.addEventListener('dblclick',e=>{
     launchFireworks(e.clientX,e.clientY);
 });
 
-// ══════════════════════════════════════════════════════
-// EGG 5 — RETRO TERMINAL  (press ` · type "terminal")
-// ══════════════════════════════════════════════════════
+// easter egg 5 — terminal retro en la página
+// esto me llevó bastante tiempo pero me salió bastante chulo la verdad
+// se abre con ` o escribiendo "terminal"
+// ────────────────────────────────
 const retroOverlay=document.getElementById('retro-overlay');
 const retroBody=document.getElementById('retro-body');
 const retroInput=document.getElementById('retro-input');
@@ -415,7 +415,7 @@ retroInput.addEventListener('keydown',e=>{
     else if(e.key==='ArrowDown'){retroHistIdx=Math.max(retroHistIdx-1,-1);retroInput.value=retroHistIdx>=0?retroHistory[retroHistIdx]:'';e.preventDefault();}
 });
 
-// SVG name glitch on click
+// glitch en el nombre SVG al hacer clic — me costó bastante que no fuera demasiado rápido
 const nameSvg=document.getElementById('name-svg-el');
 if(nameSvg){
     nameSvg.style.pointerEvents='auto';nameSvg.style.cursor='pointer';
@@ -427,9 +427,9 @@ if(nameSvg){
     });
 }
 
-// ══════════════════════════════════════════════════════
-// KEYBOARD LISTENER
-// ══════════════════════════════════════════════════════
+// listener de teclado global — aquí se centralizan todos los atajos y easter eggs
+// podría dividirse en funciones más pequeñas pero así está todo junto y se entiende
+// ────────────────────────────────
 let typedBuf='';
 document.addEventListener('keydown',e=>{
     if(e.target===retroInput)return;
