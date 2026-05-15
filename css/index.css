@@ -18,14 +18,19 @@
         #cursor-dot  { position:fixed;width:7px;height:7px;background:white;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference; }
         #cursor-ring { position:fixed;width:30px;height:30px;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s,top .12s,transform .2s; }
 
+        /* fade-in de entrada — así Chrome no muestra el fondo negro cuando recarga */
+        /* Edge usa bfcache y no lo necesita, pero Chrome a veces recarga desde cero */
+        @keyframes pageFadeIn { from { opacity:0; } to { opacity:1; } }
+
         /* canvas de fondo para las partículas flotantes */
-        #bg-canvas { position:fixed;inset:0;z-index:0; }
+        #bg-canvas { position:fixed;inset:0;z-index:0;animation:pageFadeIn .35s ease forwards; }
 
         /* capa del SVG con las órbitas, encima del canvas */
         #orbit-svg {
             position:fixed;inset:0;
             width:100%;height:100%;
             z-index:1;pointer-events:none;overflow:visible;
+            animation:pageFadeIn .35s ease forwards;
         }
         .name-svg {
             font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:300;
@@ -35,6 +40,7 @@
         /* capa de los botones, la pongo encima del SVG con z-index:2 */
         #buttons-layer {
             position:fixed;inset:0;z-index:2;
+            animation:pageFadeIn .35s ease forwards;
             display:flex;flex-direction:column;align-items:center;justify-content:center;
             gap:16px;pointer-events:none;
         }
