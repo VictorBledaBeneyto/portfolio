@@ -1,0 +1,220 @@
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --gold: #cf9b17;
+            --cyan: #00c8ff;
+            --bg:   #020206;
+        }
+
+        html, body {
+            width: 100%; height: 100%;
+            overflow: hidden;
+            background: var(--bg);
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: none;
+        }
+
+        /* ─── Custom cursor ───────────────────────────────── */
+        #cursor-dot  { position:fixed;width:7px;height:7px;background:white;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference; }
+        #cursor-ring { position:fixed;width:30px;height:30px;border:1.5px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s,top .12s,transform .2s; }
+
+        /* ─── Background canvas ───────────────────────────── */
+        #bg-canvas { position:fixed;inset:0;z-index:0; }
+
+        /* ─── SVG layer ───────────────────────────────────── */
+        #orbit-svg {
+            position:fixed;inset:0;
+            width:100%;height:100%;
+            z-index:1;pointer-events:none;overflow:visible;
+        }
+        .name-svg {
+            font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:300;
+            fill:rgba(255,255,255,.3);letter-spacing:.6em;text-anchor:middle;
+        }
+
+        /* ─── Buttons layer ───────────────────────────────── */
+        #buttons-layer {
+            position:fixed;inset:0;z-index:2;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            gap:16px;pointer-events:none;
+        }
+        .btn {
+            pointer-events:auto;
+            display:flex;align-items:center;justify-content:center;gap:13px;
+            text-decoration:none;padding:0 32px;height:64px;border-radius:8px;
+            font-family:'Space Grotesk',sans-serif;font-weight:700;
+            font-size:clamp(13px,1.6vw,16px);letter-spacing:.14em;text-transform:uppercase;
+            transition:box-shadow .3s,transform .25s,background .3s;
+            position:relative;overflow:hidden;white-space:nowrap;cursor:none;
+        }
+        .btn::before {
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+            transform:translateX(-100%);transition:transform .5s;
+        }
+        .btn:hover::before { transform:translateX(100%); }
+        .btn-artistic {
+            min-width:280px;
+            background:linear-gradient(135deg,#120d00,#1f1600);
+            border:1.5px solid var(--gold);color:var(--gold);
+            box-shadow:0 0 18px rgba(207,155,23,.12);
+        }
+        .btn-artistic:hover { box-shadow:0 0 45px rgba(207,155,23,.5),0 0 80px rgba(207,155,23,.16);transform:scale(1.04) translateY(-2px); }
+        .btn-software {
+            min-width:340px;
+            background:linear-gradient(135deg,#00101e,#00182d);
+            border:1.5px solid var(--cyan);color:var(--cyan);
+            box-shadow:0 0 18px rgba(0,200,255,.12);
+        }
+        .btn-software:hover { box-shadow:0 0 45px rgba(0,200,255,.5),0 0 80px rgba(0,200,255,.16);transform:scale(1.04) translateY(-2px); }
+        .btn-icon { font-size:22px; }
+        #btn-sep { width:1px;height:16px;background:linear-gradient(to bottom,var(--gold),var(--cyan));opacity:.35;pointer-events:none; }
+
+        /* ─── Inactivity character ────────────────────────── */
+        #idle-char {
+            position:fixed;bottom:24px;right:24px;z-index:100;
+            display:flex;flex-direction:column;align-items:center;gap:10px;
+            opacity:0;transform:translateY(16px);
+            transition:opacity .5s,transform .5s;pointer-events:none;
+        }
+        #idle-char.show { opacity:1;transform:translateY(0); }
+        .idle-bubble {
+            background:rgba(15,20,35,.95);color:#e2e8f0;
+            border:1px solid rgba(255,255,255,.12);
+            padding:9px 15px;border-radius:12px;
+            font-size:13px;max-width:220px;text-align:center;line-height:1.5;
+            box-shadow:0 6px 24px rgba(0,0,0,.6);position:relative;
+        }
+        .idle-bubble::after {
+            content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+            border:8px solid transparent;border-top-color:rgba(15,20,35,.95);border-bottom:0;
+        }
+
+        /* ─── Hint (visible + pulsing) ────────────────────── */
+        #hint {
+            position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+            color:rgba(255,255,255,.82);font-size:11px;letter-spacing:.16em;
+            text-transform:uppercase;z-index:5;pointer-events:none;
+            background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.16);
+            padding:7px 22px;border-radius:99px;white-space:nowrap;
+            animation:hintPulse 3s ease-in-out infinite;
+        }
+        @keyframes hintPulse {
+            0%,100% { opacity:.6;  box-shadow:none; }
+            50%      { opacity:1;   box-shadow:0 0 20px rgba(207,155,23,.25),0 0 20px rgba(0,200,255,.15); }
+        }
+
+        /* ─── Easter egg overlays ─────────────────────────── */
+        #matrix-canvas { position:fixed;inset:0;z-index:200;display:none;pointer-events:none; }
+        #hire-overlay {
+            position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.93);
+            display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+        }
+        #hire-overlay.show { display:flex; }
+        .hire-title {
+            font-size:clamp(42px,9vw,110px);font-weight:700;
+            background:linear-gradient(90deg,var(--gold),var(--cyan),#b57fff,var(--gold));
+            background-size:300%;-webkit-background-clip:text;background-clip:text;
+            -webkit-text-fill-color:transparent;animation:shimmer 2.5s linear infinite;
+            text-align:center;line-height:1;
+        }
+        @keyframes shimmer{from{background-position:0%}to{background-position:300%}}
+        .hire-sub { color:rgba(255,255,255,.65);font-size:16px;text-align:center;line-height:1.8; }
+        .hire-sub a { color:var(--cyan);text-decoration:none; }
+        .hire-close {
+            background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);
+            padding:10px 32px;border-radius:99px;cursor:pointer;font-size:14px;
+            font-family:'Space Grotesk',sans-serif;letter-spacing:.1em;transition:all .25s;
+        }
+        .hire-close:hover { background:rgba(255,255,255,.1);color:#fff; }
+
+        /* ─── Retro terminal ──────────────────────────────── */
+        #retro-overlay {
+            position:fixed;inset:0;z-index:250;background:#000;
+            display:none;flex-direction:column;padding:0;overflow:hidden;
+        }
+        #retro-overlay.show { display:flex; }
+        #retro-overlay::before {
+            content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+            background:repeating-linear-gradient(transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);
+        }
+        .retro-titlebar {
+            background:#1a1a1a;border-bottom:1px solid #333;
+            padding:10px 18px;display:flex;align-items:center;gap:10px;
+            font-family:monospace;font-size:13px;color:#888;flex-shrink:0;position:relative;z-index:2;
+        }
+        .retro-dot { width:12px;height:12px;border-radius:50%; }
+        .retro-dot-r { background:#ff5f56; }
+        .retro-dot-y { background:#ffbd2e; }
+        .retro-dot-g { background:#27c93f; cursor:pointer; }
+        .retro-body {
+            flex:1;overflow-y:auto;padding:20px 24px;
+            font-family:'JetBrains Mono',monospace;font-size:14px;color:#00ff41;
+            line-height:1.7;position:relative;z-index:2;
+        }
+        .retro-body::-webkit-scrollbar { width:4px; }
+        .retro-body::-webkit-scrollbar-thumb { background:#333; }
+        .retro-input-row {
+            display:flex;align-items:center;gap:8px;padding:12px 24px;
+            border-top:1px solid #1a1a1a;flex-shrink:0;position:relative;z-index:2;
+        }
+        .retro-prompt { color:#00ff41;font-family:monospace;font-size:14px;white-space:nowrap; }
+        #retro-input {
+            flex:1;background:none;border:none;outline:none;
+            color:#00ff41;font-family:monospace;font-size:14px;caret-color:#00ff41;
+        }
+        .retro-line { margin:2px 0; }
+        .retro-line.cmd { color:#fff; }  .retro-line.out { color:#00ff41; }
+        .retro-line.err { color:#ff4444; } .retro-line.sys { color:#888; }
+        .retro-line.hi  { color:#00cfff; }
+
+        /* ─── Misc effects ────────────────────────────────── */
+        .confetti     { position:fixed;top:-12px;pointer-events:none;z-index:400; }
+        .spark        { position:fixed;border-radius:50%;pointer-events:none;z-index:50;transform:translate(-50%,-50%); }
+        .gravity-char { position:fixed;pointer-events:none;z-index:500;font-weight:700;will-change:transform; }
+        .fw-particle  { position:fixed;border-radius:50%;pointer-events:none;z-index:450; }
+
+        /* ─── Page transition overlay ─────────────────────── */
+        #page-transition {
+            position:fixed;inset:0;background:#020206;
+            z-index:9999;pointer-events:none;
+            opacity:1;transition:opacity .45s ease;
+        }
+
+        /* ─── Mobile name (shown when SVG is hidden) ─────── */
+        #mobile-name {
+            display:none;
+            position:fixed;top:0;left:0;right:0;z-index:3;
+            text-align:center;padding:32px 20px 0;pointer-events:none;
+        }
+        #mobile-name h1 {
+            font-family:'Cormorant Garamond',serif;font-weight:300;
+            font-size:clamp(26px,8vw,40px);letter-spacing:.25em;
+            color:rgba(255,255,255,.85);line-height:1.1;
+        }
+        #mobile-name p {
+            font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+            color:rgba(207,155,23,.7);margin-top:10px;
+        }
+
+        /* ─── Mobile ──────────────────────────────────────── */
+        @media (max-width:768px) {
+            #orbit-svg { display:none; }
+            #mobile-name { display:block; }
+            body { cursor:auto; }
+            #cursor-dot, #cursor-ring { display:none; }
+            /* Buttons fit small screens */
+            .btn { min-width:0; width:min(88vw,340px); font-size:clamp(12px,3.8vw,16px); padding:0 18px; height:58px; }
+            /* Hint: simpler for touch */
+            #hint {
+                font-size:9.5px; padding:5px 14px; letter-spacing:.08em;
+                white-space:normal; text-align:center; width:88vw;
+                bottom:14px;
+            }
+            /* Idle char: smaller on mobile */
+            #idle-char { right:12px; bottom:60px; }
+        }
+
+        @media (max-width:400px) {
+            .btn { height:52px; }
+        }

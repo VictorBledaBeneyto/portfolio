@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Víctor Bleda Beneyto</title>
+
+
+    <link rel="icon" type="image/png" href="images/logo/Logo.png" />
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#cf9b17",
+                        "primary-dark": "#0f3ba0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-dark": "#1a2231",
+                        "neutral-800": "#1e293b",
+                        "neutral-900": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/actor.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
+
+<!-- Foco de teatro que sigue al cursor -->
+<div id="spotlight"></div>
+
+<!-- Overlay de transición entre páginas -->
+<div id="page-transition"></div>
+
+    <nav
+        class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4 md:px-12 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+            <a class="text-white font-bold tracking-widest text-lg uppercase z-50" href="#">
+                VÍCTOR <span class="text-primary">BLEDA</span>
+            </a>
+
+            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                class="md:hidden text-white z-50">
+                <span class="material-icons">menu</span>
+            </button>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-xs uppercase tracking-[0.2em] text-white/40 hover:text-white/70 transition-all flex items-center gap-1"
+                    href="index.html">
+                    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M9 2L4 7l5 5"/></svg>
+                    Volver
+                </a>
+                <a class="text-xs uppercase tracking-[0.2em] text-white/70 hover:text-white transition-all"
+                    href="#bio">Sobre Mí</a>
+                <a class="text-xs uppercase tracking-[0.2em] text-white/70 hover:text-white transition-all"
+                    href="#cv">CV</a>
+                <a class="text-xs uppercase tracking-[0.2em] text-white/70 hover:text-white transition-all"
+                    href="#projects">Proyectos</a>
+                <a class="text-xs uppercase tracking-[0.2em] text-white/70 hover:text-white transition-all"
+                    href="#reel">Galería</a>
+                <a class="px-5 py-2 rounded-full bg-primary/20 border border-primary/30 text-xs font-bold uppercase tracking-widest text-white hover:bg-primary transition-all"
+                    href="#contact">Contacto</a>
+                <a href="https://www.instagram.com/viktor_bleda" target="_blank"
+                    class="text-white/50 hover:text-white transition-all">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-background-dark/95 border-b border-white/10 p-6 flex flex-col space-y-4 animate-fade-in text-center">
+            <a class="text-sm uppercase tracking-widest text-white/40 flex items-center justify-center gap-1"
+                href="index.html">
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M9 2L4 7l5 5"/></svg>
+                Inicio
+            </a>
+            <a onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                class="text-sm uppercase tracking-widest text-white/70" href="#bio">Sobre Mí</a>
+            <a onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                class="text-sm uppercase tracking-widest text-white/70" href="#cv">CV</a>
+            <a onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                class="text-sm uppercase tracking-widest text-white/70" href="#projects">Proyectos</a>
+            <a onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                class="text-sm uppercase tracking-widest text-white/70" href="#reel">Galería</a>
+            <a onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+                class="text-sm uppercase tracking-widest text-primary font-bold" href="#contact">Contacto</a>
+
+            <div class="pt-4 border-t border-white/10">
+                <a href="https://www.instagram.com/viktor_bleda" target="_blank"
+                    class="text-white/70 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                    <span class="text-xs uppercase tracking-widest">Instagram</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative w-full h-screen overflow-hidden flex items-end pb-24 md:pb-32 px-6 md:px-12">
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img alt="Fondo Víctor Bleda"
+                class="w-full h-full object-cover object-center opacity-60 bg-animate scale-60"
+                style="object-position:60% 65%;" src="images/fotos/foto_inicio.jpg" />
+            <div class="absolute inset-0 cinematic-gradient z-10"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90 z-10">
+            </div>
+        </div>
+        <div class="relative z-20 w-full max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+            <div class="col-span-1 md:col-span-8 lg:col-span-9 animate-hero-text">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="h-[1px] w-12 bg-primary"></span>
+                    <h2 class="text-primary font-medium tracking-[0.4em] text-sm md:text-base uppercase">Actor/Modelo
+                    </h2>
+                </div>
+                <h1
+                    class="mt-6 text-6xl md:text-8xl lg:text-[9rem] font-black text-white leading-[0.85] tracking-tight uppercase drop-shadow-2xl">
+                    VÍCTOR<br /><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">BLEDA</span>
+                </h1>
+                <div class="mt-8 md:mt-12 flex flex-wrap gap-6 items-center">
+                    <!--Videobook Botón habilitar esto para el futuro videobook
+
+                    class="text-6xl md:text-8xl lg:text-[9rem] font-black text-white leading-[0.85] tracking-tight uppercase drop-shadow-2xl">
+                    TU<br /><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">NOMBRE</span>
+                </h1>
+                <div class="mt-8 md:mt-12 flex flex-wrap gap-6 items-center">
+
+                    <a href="#reel"
+                        class="bg-primary text-white px-8 py-4 rounded hover:bg-blue-700 transition-all duration-300 flex items-center space-x-3 group shadow-lg shadow-primary/25">
+                        <span class="material-icons group-hover:scale-110 transition-transform">play_circle</span>
+                        <span class="font-bold tracking-widest text-xs md:text-sm uppercase">Ver Videobook</span>
+
+                    </a>-->
+
+                    <a href="#cv"
+                        class="bg-transparent border border-white/20 text-white px-8 py-4 rounded hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                        <span class="font-bold tracking-widest text-xs md:text-sm uppercase">Ver CV</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-span-1 md:col-span-4 lg:col-span-3 flex flex-col justify-end items-start md:items-end animate-hero-text"
+                style="animation-delay: 0.2s;">
+
+                <!--<p class="text-gray-400 text-sm md:text-right leading-relaxed max-w-xs mb-8">
+
+                <p class="text-gray-400 text-sm md:text-right leading-relaxed max-w-xs mb-8">
+
+                    Basado en Madrid. Especializado en papeles dramáticos.
+                </p>-->
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce z-20">
+            <span class="text-xs uppercase tracking-widest text-white/50 mb-2">Scroll</span>
+            <span class="material-icons text-white/50">keyboard_arrow_down</span>
+        </div>
+    </section>
+
+    <section id="bio" class="pt-28 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-5 relative group">
+                <div class="aspect-[3/4] w-full rounded-lg overflow-hidden shadow-2xl relative">
+                    <img alt="Retrato Víctor Bleda"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="images/fotos/foto_cv.jpg" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent opacity-60">
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-7 flex flex-col justify-center py-4">
+                <h1
+                    class="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 dark:text-white mb-2 tracking-tight">
+                    Sobre <span
+                        class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-400">Mí</span>
+                </h1>
+                <div class="h-1 w-20 bg-primary mb-8 rounded-full"></div>
+
+                <div
+                    class="prose prose-lg dark:prose-invert text-slate-600 dark:text-slate-300 font-light leading-relaxed">
+                    <p class="mb-6">
+                        Soy Víctor Bleda Beneyto, un perfil versátil apasionado por la expresión artística en todas sus
+                        formas. Ya sea frente a una cámara, sobre las tablas de un teatro o en el ámbito del modelaje,
+                        busco siempre aportar verdad, presencia y profesionalidad a cada proyecto.
+                    </p>
+                    <p>
+                        Con base entre Valencia y Madrid, y total disponibilidad para viajar, encaro cada nuevo reto con
+                        energía y compromiso. Como artista independiente, disfruto colaborando directamente con
+                        directores, fotógrafos y equipos creativos para dar vida a personajes y campañas con absoluta
+                        autenticidad.
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10 pt-10 border-t border-slate-200 dark:border-slate-800">
+                    <div>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mb-1">Nombre</span>
+                        <span class="block text-base font-medium text-slate-900 dark:text-white">Víctor Bleda
+                            Beneyto</span>
+                    </div>
+                    <div>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mb-1">Estatura</span>
+                        <span class="block text-base font-medium text-slate-900 dark:text-white">180 cm</span>
+                    </div>
+                    <div>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mb-1">Pelo</span>
+                        <span class="block text-base font-medium text-slate-900 dark:text-white">Rubio</span>
+                    </div>
+                    <div class="sm:col-span-2 md:col-span-1">
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mb-1">Residencia</span>
+                        <span class="block text-base font-medium text-slate-900 dark:text-white leading-snug">
+                            Valencia / Madrid<br>
+                            <span class="text-sm text-slate-500 font-normal">(Disponibilidad para viajar)</span>
+                        </span>
+                    </div>
+                    <div class="sm:col-span-2 md:col-span-2">
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mb-1">Idiomas</span>
+                        <span class="block text-base font-medium text-slate-900 dark:text-white leading-snug">
+                            Español (Nativo)<br>
+                            Valenciano / Catalán (Nativo)<br>
+                            Inglés (Alto)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ── Animated stats bar ── -->
+                <div id="stats-bar" class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-10 pt-10 border-t border-slate-200 dark:border-slate-800">
+                    <div class="text-center">
+                        <span class="stat-num block text-4xl font-bold text-primary counter" data-target="3">0</span>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mt-1">Producciones</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="stat-num block text-4xl font-bold text-primary counter" data-target="1">0</span>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mt-1">Documental</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="stat-num block text-4xl font-bold text-primary counter" data-target="19">0</span>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mt-1">Sesiones Modelo</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="stat-num block text-4xl font-bold text-primary counter" data-target="1">0</span>
+                        <span class="block text-xs uppercase tracking-widest text-slate-400 mt-1">Obra Teatro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="cv" class="pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex items-end justify-between mb-10 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div>
+                <h2 class="text-3xl font-light text-slate-900 dark:text-white tracking-wide">Currículum <span
+                        class="font-semibold">Artístico</span></h2>
+            </div>
+            <div class="mb-6">
+                <button onclick="descargarCV()"
+                    class="no-print bg-primary/10 hover:bg-primary text-primary hover:text-white border border-primary/20 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <span class="material-icons text-sm">download</span>
+                    Descargar CV
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-3">
+                <div class="sticky top-28 space-y-1">
+                    <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-white transition-colors"
+                        href="#film">Cine</a>
+                    <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-white transition-colors"
+                        href="#tv">Televisión</a>
+                    <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-white transition-colors"
+                        href="#theatre">Teatro</a>
+                    <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-white transition-colors"
+                        href="#modeling">Modelaje</a>
+                    <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-white transition-colors"
+                        href="#training">Formación</a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-9 space-y-16">
+
+                <div class="scroll-mt-32" id="film">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-primary text-2xl">movie</span>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Cine
+                        </h3>
+                    </div>
+                    <div
+                        class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <thead
+                                class="bg-slate-50 dark:bg-slate-800/80 text-xs uppercase text-slate-500 font-medium">
+                                <tr>
+                                    <th class="px-6 py-4 tracking-wider w-[40%]">Título</th>
+                                    <th class="px-6 py-4 tracking-wider w-[30%]">Personaje</th>
+                                    <th class="px-6 py-4 tracking-wider text-right w-[30%]">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Las Consecuencias
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Extra / Figuración</td>
+                                    <td class="px-6 py-4 text-slate-500 dark:text-slate-400 text-right">Dir. Claudia
+                                        Pinto</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Federica Montseny,
+                                        la dona que parla</td>
+                                    <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Extra / Figuración</td>
+                                    <td class="px-6 py-4 text-slate-500 dark:text-slate-400 text-right">Dir. Laura Mañá
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Práctica de
+                                        Secuencia</td>
+                                    <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Actor</td>
+                                    <td class="px-6 py-4 text-slate-500 dark:text-slate-400 text-right">Escuela Nuncine
+                                        Valencia</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="scroll-mt-32" id="tv">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-primary text-2xl">tv</span>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white uppercase tracking-wider">
+                            Televisión</h3>
+                    </div>
+                    <div
+                        class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <thead
+                                class="bg-slate-50 dark:bg-slate-800/80 text-xs uppercase text-slate-500 font-medium">
+                                <tr>
+                                    <th class="px-6 py-4 tracking-wider w-[40%]">Título</th>
+                                    <th class="px-6 py-4 tracking-wider w-[30%]">Personaje</th>
+                                    <th class="px-6 py-4 tracking-wider text-right w-[30%]">Cadena / Tipo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Fusilados</td>
+                                    <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Colaboración</td>
+                                    <td class="px-6 py-4 text-slate-500 dark:text-slate-400 text-right">À Punt
+                                        (Documental)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="scroll-mt-32" id="theatre">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-primary text-2xl">theater_comedy</span>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Teatro
+                        </h3>
+                    </div>
+                    <div
+                        class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <thead
+                                class="bg-slate-50 dark:bg-slate-800/80 text-xs uppercase text-slate-500 font-medium">
+                                <tr>
+                                    <th class="px-6 py-4 tracking-wider w-[40%]">Obra</th>
+                                    <th class="px-6 py-4 tracking-wider w-[30%]">Personaje</th>
+                                    <th class="px-6 py-4 tracking-wider text-right w-[30%]">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Tres sombreros de
+                                        copa</td>
+                                    <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Actor de reparto</td>
+                                    <td class="px-6 py-4 text-slate-500 dark:text-slate-400 text-right">Producción
+                                        Teatral</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="scroll-mt-32" id="modeling">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-primary text-2xl">camera_alt</span>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white uppercase tracking-wider">
+                            Modelaje</h3>
+                    </div>
+                    <div
+                        class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
+                        <table class="w-full text-left text-sm table-fixed">
+                            <thead
+                                class="bg-slate-50 dark:bg-slate-800/80 text-xs uppercase text-slate-500 font-medium">
+                                <tr>
+                                    <th class="px-6 py-4 tracking-wider w-[40%]">Campaña / Proyecto</th>
+                                    <th class="px-6 py-4 tracking-wider w-[30%]">Rol</th>
+                                    <th class="px-6 py-4 tracking-wider text-right w-[30%]">Cliente/Marca</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Moda Nupcial</td>
+                                    <td class="px-6 py-4 text-slate-600 dark:text-slate-300">Modelo (Traje de novio)
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-500 dark:text-slate-400 text-right">Lucía 1990</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="scroll-mt-32 mt-16" id="training">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="material-icons text-primary text-2xl">school</span>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white uppercase tracking-wider">
+                            Formación</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div
+                            class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 hover:border-primary/50 transition-colors">
+                            <h4 class="text-lg font-medium text-slate-900 dark:text-white mb-2">Atelier del Drama</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Valencia</p>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                <li class="flex items-center space-x-2">
+                                    <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+                                    <span>Técnica actoral e interpretación</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+                                    <span>Expresión corporal y presencia escénica</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+                                    <span>Preparación de escenas y personajes</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-[#0d1119] relative">
+        <!--<div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Proyectos Destacados</h2>
+                <p class="text-gray-500 dark:text-gray-400">Una selección de mis últimos trabajos.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="group relative rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 transform hover:-translate-y-2 aspect-[2/3]">
+                <img alt="Proyecto"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvWetRNsR8qMKsYEsT-PgpZ1BXWX9o3dQYJSFPSV0omyFy3doRKbBBvOHtApPIEK4KG4ZSHHbbI4qQxz4-WT7xXHrUoSC50uW-jiJlS2-h-TJV8L1BIfrsAoRpLwxyAdhPJ5H5lFC9eNnM9OqmpaHxM1-qidu34dhfoJtsergqrYegsnN9gdI6-5XQwxjDqehhnMTZQ8CHBua41rx9d5SixuFOLHmxW4lN4PX2pH_7i-Y6o-A_3skKUJZJAH8wMog16gWCs0U5K_Y" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <div
+                        class="flex items-center space-x-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <span
+                            class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-primary/80 text-white rounded">Cortometraje</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">Título del Proyecto</h3>
+                    <p class="text-primary font-medium mb-2">Personaje: Nombre</p>
+                </div>
+            </div>
+            <div
+                class="group relative rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 transform hover:-translate-y-2 aspect-[2/3]">
+                <img alt="Proyecto"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTsg6vUgrNGEvjtbsDl_iCyk6px7LfS7U1XrQs6ptJuFaSJVWHbdVFGQYo88hX4l09Z1hL-HQouroI1CdGgQkQ6fsjUThEHu-zgDBdZLusTv8GMxiLAQUZzJHcbOZApXxGCMwEUiXuuAmm-aqOT5ylfkIy3oc3pUzPDgnev8jXMI3ey05Zrvh-aeyuiZU82fRKFXUFkcliokpB53j6pmDRg01uwHjNMW4vseHJ2Dlo0tVnfUnSkNx2V9HK6rAN0tdhCC7QAAjMme8" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <div
+                        class="flex items-center space-x-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <span
+                            class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-primary/80 text-white rounded">Teatro</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">Título de la Obra</h3>
+                    <p class="text-primary font-medium mb-2">Personaje: Nombre</p>
+                </div>
+            </div>
+        </div>-->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">
+                Práctica <span class="text-primary">Secuencia</span>
+            </h2>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Colaboración con la Escuela Nuncine Valencia</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4">
+            <div
+                class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-slate-900">
+
+                <iframe src="https://drive.google.com/file/d/1CFH7lr8eErrAGX2oqtqYkV_z22MJ-7-A/preview"
+                    class="absolute inset-0 w-full h-full border-0" allow="autoplay" allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <div class="mt-6 text-center">
+                <a href="https://drive.google.com/file/d/1CFH7lr8eErrAGX2oqtqYkV_z22MJ-7-A/view?usp=sharing"
+                    target="_blank"
+                    class="text-xs uppercase tracking-widest text-white/40 hover:text-primary transition-colors duration-300">
+                    Abrir en ventana externa <span class="material-icons text-xs align-middle">open_in_new</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="reel" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!--
+        Esto es para el videobook que me haré en el futuro, voy a buscar el botón de arriba para comentarlo también y despues poder tenerlo a mano para eliminar el comentario
+        <div class="text-center mb-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Videobook <span
+                    class="text-primary">2024</span></h2>
+        </div>
+        <div
+            class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 group cursor-pointer bg-surface-dark mb-24">
+            <img alt="Fondo video"
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-500 scale-105 group-hover:scale-100"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8enZOE3ECyDQP4zDp3_TJNCHlKnAvVlL53Jh_RyG-qgp80rpMU12lDCQHpt44xbuYom2VWjIxrmQLFEAbxQ5vQiuTUTihnBjsEf2c5L8fHyuHiKPmV8Kp5ReGuDq8pjaFmrD4IOTP3nuQUiI0QoICurE78kXSFNLavKlLZqCRuy3rk3w2NBbgckgmqkJiNUfOWJldCTFNRMI8IqiiR1hnsszLwdeNacRl5CXdzZPJCYu6cawEc-HOypisHrMWGfl9Y7EYK71w5bI" />
+            <div class="absolute inset-0 flex items-center justify-center z-10">
+                <div
+                    class="w-20 h-20 md:w-24 md:h-24 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center pl-2 shadow-[0_0_40px_rgba(23,84,207,0.5)] group-hover:scale-110 transition-transform duration-300">
+                    <span class="material-icons text-white text-5xl md:text-6xl">play_arrow</span>
+                </div>
+            </div>
+        </div>-->
+
+        <div id="gallery" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Galería Fotográfica</h2>
+            <p class="text-gray-500 dark:text-gray-400">Trabajos destacados y retratos profesionales.</p>
+        </div>
+
+        <div class="mb-16">
+            <h3 class="text-xl font-semibold text-primary uppercase tracking-widest mb-6 flex items-center gap-2">
+                <span class="material-icons">history_edu</span> Documental: Fusilados
+            </h3>
+            <div id="masonry-fusilados" class="masonry-grid">
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 1"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados1_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados2_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados3_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados4_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados5_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados6_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados7_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Documental Fusilados 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fusilados/Fusilados8_2022.jpeg" />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h3 class="text-xl font-semibold text-primary uppercase tracking-widest mb-6 flex items-center gap-2">
+                <span class="material-icons">camera_alt</span> Modelo: Moda Nupcial
+            </h3>
+            <div id="masonry-modelo" class="masonry-grid">
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 1"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo1_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo2_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo3_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo4_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo5_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo6_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo7_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo8_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo9_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo10_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo11_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo12_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo13_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo14_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo15_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo16_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo17_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo18_2022.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Modelo 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/modelo/Modelo19_2022.jpeg" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb-16">
+            <h3 class="text-xl font-semibold text-primary uppercase tracking-widest mb-6 flex items-center gap-2">
+                <span class="material-icons">portrait</span> Headshots y Estudio
+            </h3>
+            <div id="masonry-headshots" class="masonry-grid">
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Foto Estudio 1"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fotos/foto4.jpg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Foto Estudio 1"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fotos/Foto1_2023.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Foto Estudio 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fotos/Foto2_2023.jpeg" />
+                </div>
+                <div class="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in">
+                    <img alt="Foto Estudio 2"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                        src="images/fotos/Foto3_2023.jpeg" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="relative py-20 lg:py-28 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/20 to-transparent"></div>
+            <div
+                class="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+
+                <!--<div class="space-y-12">
+
+                <div class="space-y-12">
+
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Contacto <br />& Representación
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-md leading-relaxed">
+                            Actualmente disponible para nuevos proyectos. Contacta directamente o a través de mi
+                            representante para consultas de casting.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6 border-l-2 border-primary/30 pl-6">
+                        <div>
+                            <p
+                                class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-1">
+                                Email Directo</p>
+                            <a class="text-xl md:text-2xl font-medium hover:text-primary transition-colors"
+                                href=">tuemail@gmail.com</a>
+                        </div>
+                        <div>
+                            <p
+                                class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-1">
+                                Representación / Prensa</p>
+                            <a class="text-xl md:text-2xl font-medium hover:text-primary transition-colors"
+                                href="">repre@agencia.com</a>
+                        </div>
+                    </div>
+
+
+
+                </div>-->
+
+            </div>
+
+
+            <div
+                class="bg-white dark:bg-[#1a212e] p-8 md:p-10 rounded-xl shadow-2xl shadow-black/50 border border-gray-100 dark:border-gray-800 relative group">
+                <div
+                    class="absolute -top-1 -right-1 w-20 h-20 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-colors duration-500">
+                </div>
+                <h3 class="text-2xl font-bold mb-8">Envíame un mensaje</h3>
+                <form action="https://formspree.io/f/meelrbno" class="space-y-6" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label
+                                class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                                for="firstName">Nombre *</label>
+                            <input required
+                                class="w-full bg-gray-50 dark:bg-[#1f2937] border-b-2 border-transparent border-b-gray-200 dark:border-b-gray-700 focus:border-b-primary dark:focus:border-b-primary focus:ring-0 text-gray-900 dark:text-white px-4 py-3 rounded-t-lg transition-colors placeholder-gray-400"
+                                id="firstName" name="firstName" placeholder="Tu nombre" type="text" />
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                                for="lastName">Apellidos</label>
+                            <input
+                                class="w-full bg-gray-50 dark:bg-[#1f2937] border-b-2 border-transparent border-b-gray-200 dark:border-b-gray-700 focus:border-b-primary dark:focus:border-b-primary focus:ring-0 text-gray-900 dark:text-white px-4 py-3 rounded-t-lg transition-colors placeholder-gray-400"
+                                id="lastName" name="lastName" placeholder="Tus apellidos" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                            for="email">Correo Electrónico *</label>
+                        <input required
+                            class="w-full bg-gray-50 dark:bg-[#1f2937] border-b-2 border-transparent border-b-gray-200 dark:border-b-gray-700 focus:border-b-primary dark:focus:border-b-primary focus:ring-0 text-gray-900 dark:text-white px-4 py-3 rounded-t-lg transition-colors placeholder-gray-400"
+                            id="email" name="_replyto" placeholder="tuemail@ejemplo.com" type="email" />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                            for="subject">Asunto</label>
+                        <input
+                            class="w-full bg-gray-50 dark:bg-[#1f2937] border-b-2 border-transparent border-b-gray-200 dark:border-b-gray-700 focus:border-b-primary dark:focus:border-b-primary focus:ring-0 text-gray-900 dark:text-white px-4 py-3 rounded-t-lg transition-colors placeholder-gray-400"
+                            id="subject" name="_subject" placeholder="¿De qué nos quieres hablar?" type="text" />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                            for="message">Mensaje *</label>
+                        <textarea required
+                            class="w-full bg-gray-50 dark:bg-[#1f2937] border-b-2 border-transparent border-b-gray-200 dark:border-b-gray-700 focus:border-b-primary dark:focus:border-b-primary focus:ring-0 text-gray-900 dark:text-white px-4 py-3 rounded-t-lg transition-colors resize-none placeholder-gray-400"
+                            id="message" name="message" placeholder="¿En qué podemos colaborar?" rows="4"></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button
+                            class="w-full bg-primary hover:bg-yellow-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center gap-2"
+                            type="submit">
+                            <span>ENVIAR MENSAJE</span>
+                            <span
+                                class="material-icons text-sm transform rotate-[-45deg] relative top-[1px]">send</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0c0f16] border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="flex flex-col justify-center items-center gap-6 text-xs text-gray-500 text-center">
+
+                <p>© 2026 Víctor Bleda Beneyto. Todos los derechos reservados.</p>
+
+                <p class="text-[10px] text-gray-700 tracking-widest uppercase">
+                    🎬 &nbsp;¿Listo para la siguiente escena?
+                </p>
+
+                <div class="flex gap-6 items-center justify-center">
+                    <a class="hover:text-white transition-colors flex items-center gap-2"
+                        href="https://www.instagram.com/viktor_bleda" target="_blank">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                        <span>Instagram</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 opacity-0">
+
+        <button id="close-lightbox"
+            class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-50 p-2 rounded-full hover:bg-white/10">
+            <span class="material-icons text-3xl">close</span>
+        </button>
+
+        <button id="prev-lightbox"
+            class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-3 rounded-full hover:bg-white/10 z-50">
+            <span class="material-icons text-5xl">chevron_left</span>
+        </button>
+
+        <button id="next-lightbox"
+            class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-3 rounded-full hover:bg-white/10 z-50">
+            <span class="material-icons text-5xl">chevron_right</span>
+        </button>
+
+        <img id="lightbox-img" src="" alt="Imagen ampliada"
+            class="max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+    </div>
+
+    <script src="js/actor.js" defer></script>
+<div style="position: absolute; left: -9999px; top: 0; z-index: -100;">
+    <div id="cv-template"
+        style="width: 800px; padding: 40px 50px; background-color: white; font-family: Arial, sans-serif; color: #1e293b; position: relative; box-sizing: border-box;">
+
+        <div
+            style="display: flex; align-items: flex-start; border-bottom: 3px solid #cf9b17; padding-bottom: 20px; margin-bottom: 20px;">
+            <div
+                style="width: 150px; height: 200px; margin-right: 40px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background-color: #f1f5f9;">
+                <img src="images/fotos/foto_cv.jpg" style="width: 100%; height: 100%; object-fit: cover;"
+                    alt="Víctor Bleda">
+            </div>
+            <div style="flex: 1;">
+                <h1
+                    style="margin: 0; font-size: 36px; text-transform: uppercase; color: #cf9b17; font-weight: 900;">
+                    Víctor Bleda Beneyto</h1>
+                <p
+                    style="margin: 5px 0 15px 0; font-size: 18px; color: #64748b; font-weight: 600; text-transform: uppercase;">
+                    Actor / Modelo</p>
+
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; color: #334155; line-height: 1.4;">
+                    <div><strong>Estatura:</strong> 180 cm</div>
+                    <div><strong>Pelo:</strong> Rubio</div>
+                    <div><strong>Ojos:</strong> Verdes</div>
+
+                    <div style="grid-column: span 2; margin-top: 2px;">
+                        <strong>Idiomas:</strong>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; margin-top: 2px; color: #475569;">
+                            <span>• Español (Nativo)</span>
+                            <span>• Inglés (Alto)</span>
+                            <span>• Valenciano (Nativo)</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2px;"><strong>Residencia:</strong> Valencia / Madrid</div>
+                    <div style="margin-top: 2px;">
+                        <strong>Web:</strong>
+                        <a href="https://victorbledabeneyto.com"
+                            style="color: #cf9b17; text-decoration: none; font-weight: 600;">
+                            victorbledabeneyto.com
+                        </a>
+                    </div>
+
+                    <div
+                        style="grid-column: span 2; display: flex; align-items: center; margin-top: 6px; margin-left: -12px;">
+                        <img src="images/fotos/Foto5.jpg" alt="Contacto"
+                            style="height: 25px; width: auto; display: block; pointer-events: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="margin-bottom: 25px; text-align: justify; line-height: 1.5; font-style: italic; color: #475569; font-size: 14px; padding: 15px 20px; background-color: #f8fafc; border-radius: 8px;">
+            Soy un perfil versátil apasionado por la expresión artística. Ya sea frente a una cámara, sobre las
+            tablas de un teatro o en el modelaje, busco siempre aportar verdad, presencia y profesionalidad a cada
+            proyecto.
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div>
+                <h3
+                    style="margin: 0 0 10px 0; font-size: 17px; text-transform: uppercase; border-left: 5px solid #cf9b17; padding-left: 15px; color: #0f172a;">
+                    Cine y Televisión</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 8px 0; font-weight: bold; width: 45%;">Las Consecuencias</td>
+                        <td style="padding: 8px 0; color: #64748b;">Extra / Figuración</td>
+                        <td style="padding: 8px 0; text-align: right; color: #94a3b8;">Dir. Claudia Pinto</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 8px 0; font-weight: bold;">Federica Montseny, la dona que parla</td>
+                        <td style="padding: 8px 0; color: #64748b;">Extra / Figuración</td>
+                        <td style="padding: 8px 0; text-align: right; color: #94a3b8;">Dir. Laura Mañá</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 8px 0; font-weight: bold;">Práctica de Secuencia</td>
+                        <td style="padding: 8px 0; color: #64748b;">Actor</td>
+                        <td style="padding: 8px 0; text-align: right; color: #94a3b8;">Escuela Nuncine Valencia</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 8px 0; font-weight: bold;">Fusilados</td>
+                        <td style="padding: 8px 0; color: #64748b;">Colaboración</td>
+                        <td style="padding: 8px 0; text-align: right; color: #94a3b8;">À Punt (Documental)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="display: flex; gap: 40px;">
+                <div style="flex: 1;">
+                    <h3
+                        style="margin: 0 0 10px 0; font-size: 17px; text-transform: uppercase; border-left: 5px solid #cf9b17; padding-left: 15px; color: #0f172a;">
+                        Teatro</h3>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: #334155;">
+                        <li><strong>Tres sombreros de copa</strong><br><span style="color: #64748b;">Actor de reparto</span></li>
+                    </ul>
+                </div>
+                <div style="flex: 1;">
+                    <h3
+                        style="margin: 0 0 10px 0; font-size: 17px; text-transform: uppercase; border-left: 5px solid #cf9b17; padding-left: 15px; color: #0f172a;">
+                        Modelaje</h3>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: #334155;">
+                        <li><strong>Moda Nupcial</strong><br><span style="color: #64748b;">Traje de novio</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3
+                    style="margin: 0 0 10px 0; font-size: 17px; text-transform: uppercase; border-left: 5px solid #cf9b17; padding-left: 15px; color: #0f172a;">
+                    Formación Artística</h3>
+                <div style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                    <h4 style="margin: 0 0 5px 0; color: #cf9b17; font-size: 15px;">Atelier del Drama (Valencia)</h4>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 12px; line-height: 1.5; color: #475569;">
+                        <li>Técnica actoral e interpretación.</li>
+                        <li>Expresión corporal y presencia escénica.</li>
+                        <li>Preparación de escenas y personajes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        </div>
+</div>
+
+    <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[60] transform scale-90 md:scale-100">
+        <button onclick="descargarCV()"
+            class="group flex items-center gap-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 py-3 rounded-full hover:border-primary dark:hover:border-primary transition-all duration-300 shadow-2xl hover:shadow-primary/40 transform hover:-translate-y-2">
+            <span
+                class="bg-red-100 dark:bg-red-900/30 p-2 rounded-full text-red-600 dark:text-red-400 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <span class="material-icons text-xl">picture_as_pdf</span>
+            </span>
+            <div class="text-left">
+                <span
+                    class="block text-[10px] font-bold text-gray-900 dark:text-white uppercase leading-none">Descargar</span>
+                <span class="block text-[12px] font-black text-primary uppercase">Currículum</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- ── Clapperboard easter egg overlay ── -->
+    <div id="clapper-overlay">
+        <div class="clapper-board">
+            <div class="clapper-top" id="clapper-top"></div>
+            <div class="clapper-body">
+                <div><strong>PROD</strong> · VÍCTOR BLEDA BENEYTO</div>
+                <div><strong>DIR</strong> · <span id="clapper-dir">DESCONOCIDO/A</span></div>
+                <div><strong>ESCENA</strong> · <span id="clapper-scene">001</span></div>
+                <div><strong>TOMA</strong> · <span id="clapper-toma">1</span></div>
+            </div>
+        </div>
+        <div class="clapper-accion" id="clapper-accion">¡ACCIÓN!</div>
+        <div class="clapper-hint">[ clic para cerrar ]</div>
+    </div>
+</body>
+
+</html>

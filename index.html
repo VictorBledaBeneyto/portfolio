@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Víctor Bleda Beneyto — Portfolio</title>
+    <link rel="icon" type="image/png" href="images/logo/Logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div id="page-transition"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ══════════════════════════════════════════════════════
+     ORBITAL SPEECH BUBBLES SVG
+     viewBox 1200×700  ·  SVG center = (600, 350)
+     Gold  bubble orbits an ellipse rx=270 ry=115 (clockwise)
+     Cyan bubble orbits an ellipse rx=265 ry=108 (counter-clockwise)
+     Comet trails connect each bubble to its respective button
+══════════════════════════════════════════════════════ -->
+<svg id="orbit-svg" viewBox="0 0 1200 700"
+     preserveAspectRatio="xMidYMid meet"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Blur for glow effects -->
+        <filter id="blur-soft" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="16"/>
+        </filter>
+        <filter id="blur-med" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="8"/>
+        </filter>
+
+        <!-- Comet trail gradients — x1/y1 = button (transparent),  x2/y2 = bubble (opaque) -->
+        <!-- Updated each frame by JS via setAttribute -->
+        <linearGradient id="cg-gold" gradientUnits="userSpaceOnUse"
+                        x1="600" y1="320" x2="330" y2="350">
+            <stop offset="0%"  stop-color="#cf9b17" stop-opacity="0"/>
+            <stop offset="70%" stop-color="#cf9b17" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#cf9b17" stop-opacity="0.85"/>
+        </linearGradient>
+        <linearGradient id="cg-cyan" gradientUnits="userSpaceOnUse"
+                        x1="600" y1="380" x2="870" y2="350">
+            <stop offset="0%"  stop-color="#00c8ff" stop-opacity="0"/>
+            <stop offset="70%" stop-color="#00c8ff" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#00c8ff" stop-opacity="0.85"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Faint orbit ellipse guides -->
+    <ellipse cx="600" cy="350" rx="270" ry="115"
+             fill="none" stroke="#cf9b17" stroke-width=".5"
+             opacity=".1" stroke-dasharray="4 10"/>
+    <ellipse cx="600" cy="350" rx="265" ry="108"
+             fill="none" stroke="#00c8ff"  stroke-width=".5"
+             opacity=".1" stroke-dasharray="4 10"/>
+
+    <!-- Comet trails (endpoints updated by JS each frame) -->
+    <line id="comet-gold"
+          x1="600" y1="320" x2="330" y2="350"
+          stroke="url(#cg-gold)" stroke-width="2.8" stroke-linecap="round"/>
+    <line id="comet-cyan"
+          x1="600" y1="380" x2="870" y2="350"
+          stroke="url(#cg-cyan)" stroke-width="2.8" stroke-linecap="round"/>
+
+    <!-- Comet head glow at bubble position (updated by JS) -->
+    <circle id="ch-gold" cx="330" cy="350" r="22"
+            fill="#cf9b17" opacity=".18" filter="url(#blur-med)"/>
+    <circle id="ch-cyan" cx="870" cy="350" r="22"
+            fill="#00c8ff"  opacity=".18" filter="url(#blur-med)"/>
+
+    <!-- ══ GOLD BUBBLE WRAPPER (JS sets transform="translate(x,y)") ══ -->
+    <!-- Content is centered at (0,0); JS translates to orbit position  -->
+    <g id="bw-gold" transform="translate(330,350)">
+        <!-- Ambient soft glow -->
+        <circle cx="0" cy="0" r="155" fill="#cf9b17" opacity=".07" filter="url(#blur-soft)"/>
+        <!-- Glow ring (blurred stroke behind main circle) -->
+        <circle cx="0" cy="0" r="135" fill="none"
+                stroke="#cf9b17" stroke-width="8" opacity=".22" filter="url(#blur-med)"/>
+        <!-- Main bubble circle -->
+        <circle cx="0" cy="0" r="133" fill="#0b0800" stroke="#cf9b17" stroke-width="1.6"/>
+        <!-- Inner decoration ring -->
+        <circle cx="0" cy="0" r="124" fill="none"
+                stroke="#cf9b17" stroke-width=".5" opacity=".32"/>
+
+        <!-- Label -->
+        <text x="0" y="-89"
+              text-anchor="middle" font-family="Space Grotesk,sans-serif"
+              font-size="9.5" letter-spacing="3.5" fill="#cf9b17" opacity=".72">
+            ✦  CV ARTÍSTICO  ✦
+        </text>
+        <line x1="-72" y1="-78" x2="72" y2="-78"
+              stroke="#cf9b17" stroke-width=".6" opacity=".3"/>
+
+        <!-- Body text (4 lines, centered vertically in circle) -->
+        <text text-anchor="middle" font-family="Space Grotesk,sans-serif"
+              font-size="14.5" fill="#ecdba0" font-weight="500">
+            <tspan x="0" y="-50">Si quieres ver algo</tspan>
+            <tspan x="0" dy="24">relacionado con</tspan>
+            <tspan x="0" dy="24">castings, teatro</tspan>
+            <tspan x="0" dy="24">o modelaje</tspan>
+        </text>
+
+        <!-- Hint -->
+        <text x="0" y="54"
+              text-anchor="middle" font-family="Space Grotesk,sans-serif"
+              font-size="11.5" fill="#cf9b17" opacity=".8" font-style="italic">
+            haz clic en el botón
+        </text>
+
+        <!-- Subtle shine ellipse -->
+        <ellipse cx="-32" cy="-68" rx="26" ry="10" fill="#cf9b17" opacity=".06"/>
+    </g>
+
+
+    <!-- ══ CYAN BUBBLE WRAPPER ══ -->
+    <g id="bw-cyan" transform="translate(870,350)">
+        <!-- Ambient soft glow -->
+        <circle cx="0" cy="0" r="155" fill="#00c8ff" opacity=".07" filter="url(#blur-soft)"/>
+        <!-- Glow ring -->
+        <circle cx="0" cy="0" r="135" fill="none"
+                stroke="#00c8ff" stroke-width="8" opacity=".22" filter="url(#blur-med)"/>
+        <!-- Main bubble circle -->
+        <circle cx="0" cy="0" r="133" fill="#00101e" stroke="#00c8ff" stroke-width="1.6"/>
+        <!-- Inner ring -->
+        <circle cx="0" cy="0" r="124" fill="none"
+                stroke="#00c8ff" stroke-width=".5" opacity=".32"/>
+
+        <!-- Label -->
+        <text x="0" y="-89"
+              text-anchor="middle" font-family="Space Grotesk,sans-serif"
+              font-size="9.5" letter-spacing="3.5" fill="#00c8ff" opacity=".72">
+            ✦  DESARROLLADOR  ✦
+        </text>
+        <line x1="-72" y1="-78" x2="72" y2="-78"
+              stroke="#00c8ff" stroke-width=".6" opacity=".3"/>
+
+        <!-- Body text -->
+        <text text-anchor="middle" font-family="Space Grotesk,sans-serif"
+              font-size="14.5" fill="#9fe8ff" font-weight="500">
+            <tspan x="0" y="-50">Para ver mis dotes</tspan>
+            <tspan x="0" dy="24">en desarrollo</tspan>
+            <tspan x="0" dy="24">de software,</tspan>
+            <tspan x="0" dy="24">IA &amp; Big Data</tspan>
+        </text>
+
+        <!-- Hint -->
+        <text x="0" y="54"
+              text-anchor="middle" font-family="Space Grotesk,sans-serif"
+              font-size="11.5" fill="#00c8ff" opacity=".8" font-style="italic">
+            haz clic en el botón
+        </text>
+
+        <!-- Shine -->
+        <ellipse cx="-32" cy="-68" rx="26" ry="10" fill="#00c8ff" opacity=".06"/>
+    </g>
+
+
+    <!-- Name + decorative line -->
+    <text x="600" y="76" class="name-svg" id="name-svg-el">VÍCTOR BLEDA BENEYTO</text>
+    <line x1="498" y1="87" x2="702" y2="87"
+          stroke="rgba(255,255,255,.1)" stroke-width=".8"/>
+</svg>
+
+
+<!-- ── Mobile title (visible only when SVG is hidden) ── -->
+<div id="mobile-name">
+    <h1>VÍCTOR BLEDA<br>BENEYTO</h1>
+    <p>Actor · Modelo · Desarrollador</p>
+</div>
+
+<!-- ── Buttons ─────────────────────────────────────────── -->
+<div id="buttons-layer">
+    <a href="actor.html" class="btn btn-artistic" id="btn-art">
+        <span class="btn-icon">🎭</span><span>CV Artístico</span>
+    </a>
+    <div id="btn-sep"></div>
+    <a href="software.html" class="btn btn-software" id="btn-dev">
+        <span class="btn-icon">💻</span><span>Desarrollador de Software</span>
+    </a>
+</div>
+
+<div id="hint">✦ &nbsp;triple-clic · Konami ↑↑↓↓←→←→BA · escribe "contratame" · Enter para terminal &nbsp;✦</div>
+
+
+<!-- ── Inactivity SVG stick figure ───────────────────────── -->
+<div id="idle-char">
+    <div class="idle-bubble" id="idle-bubble">¿Hola? ¿Estás ahí? 👋</div>
+    <svg id="char-svg" width="80" height="115" viewBox="0 0 80 115" xmlns="http://www.w3.org/2000/svg">
+        <g id="g-chair" opacity="0">
+            <rect x="8"  y="63" width="55" height="5" rx="2" fill="#8B4513"/>
+            <rect x="59" y="33" width="5"  height="34" rx="2" fill="#A0522D"/>
+            <line x1="13" y1="68" x2="11" y2="92" stroke="#6B3410" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="57" y1="68" x2="59" y2="92" stroke="#6B3410" stroke-width="3.5" stroke-linecap="round"/>
+        </g>
+        <g id="g-tomb" opacity="0">
+            <rect x="18" y="48" width="44" height="52" rx="4" fill="#888"/>
+            <path d="M18,60 A22,22 0 0,1 62,60" fill="#aaa"/>
+            <text x="40" y="72" text-anchor="middle" font-size="7.5" fill="#555" font-family="Georgia,serif" font-weight="bold">R.I.P.</text>
+            <line x1="40" y1="76" x2="40" y2="90" stroke="#555" stroke-width="3"/>
+            <line x1="32" y1="83" x2="48" y2="83" stroke="#555" stroke-width="3"/>
+            <text x="40" y="100" text-anchor="middle" font-size="6" fill="#666" font-family="Georgia,serif">Visitante</text>
+        </g>
+        <path id="g-beard" d="M26,27 C22,40 58,40 54,27" fill="#8B6914" opacity="0"/>
+        <g id="g-body">
+            <circle cx="40" cy="16" r="13" fill="#f5d3b5" stroke="white" stroke-width="2"/>
+            <circle id="c-eye-l" cx="35" cy="13" r="2.5" fill="#333"/>
+            <circle id="c-eye-r" cx="45" cy="13" r="2.5" fill="#333"/>
+            <path id="c-mouth" d="M35,20 Q40,24 45,20" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <line x1="40" y1="29" x2="40" y2="56" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <line id="c-arm-l" x1="40" y1="38" x2="22" y2="52" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-arm-r" x1="40" y1="38" x2="58" y2="52" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-leg-lu" x1="40" y1="56" x2="28" y2="82" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-leg-ru" x1="40" y1="56" x2="52" y2="82" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-leg-ll" x1="28" y1="82" x2="28" y2="100" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+            <line id="c-leg-rl" x1="52" y1="82" x2="52" y2="100" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        </g>
+        <path id="c-sweat" d="M53,4 Q56,0 59,4 Q59,9 53,9 Z" fill="#88ccff" opacity="0"/>
+    </svg>
+</div>
+
+<!-- Easter eggs -->
+<canvas id="matrix-canvas"></canvas>
+<div id="hire-overlay">
+    <div class="hire-title">¡CONTRÁTAME!</div>
+    <div class="hire-sub">
+        <span class="email-obf" data-u="vicblebe" data-d="gmail.com" style="cursor:pointer;color:var(--cyan);"></span><br>
+        IA · Big Data · Desarrollo de Software<br>
+        <a href="https://github.com/VictorBledaBeneyto" target="_blank">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/victor-bleda-beneyto" target="_blank">LinkedIn</a>
+    </div>
+    <button class="hire-close" onclick="closeHire()">✕ &nbsp;Cerrar</button>
+</div>
+
+<div id="retro-overlay">
+    <div class="retro-titlebar">
+        <div class="retro-dot retro-dot-r"></div>
+        <div class="retro-dot retro-dot-y"></div>
+        <div class="retro-dot retro-dot-g" onclick="closeRetro()" title="Cerrar"></div>
+        <span style="margin-left:12px;">victor@portfolio:~$</span>
+        <span style="margin-left:auto;font-size:11px;opacity:.5;">Enter · Esc para cerrar</span>
+    </div>
+    <div class="retro-body" id="retro-body"></div>
+    <div class="retro-input-row">
+        <span class="retro-prompt">victor@portfolio:~$&nbsp;</span>
+        <input id="retro-input" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="escribe 'help'...">
+    </div>
+</div>
+
+<script src="js/index.js" defer></script>
+</body>
+</html>

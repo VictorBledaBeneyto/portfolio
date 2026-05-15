@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Víctor Bleda — Desarrollador de Software</title>
+    <link rel="icon" type="image/png" href="images/logo/Logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/software.css">
+
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<div id="page-transition"></div>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html" class="nav-logo"><span>~/</span>victor-bleda<span>.dev</span></a>
+    <div class="nav-links" id="nav-links">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experiencia</a>
+        <a href="#education">Formación</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#contact-section">Contacto</a>
+    </div>
+    <div class="nav-right">
+        <a href="index.html" class="nav-back">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 2L4 7l5 5"/></svg>
+            Volver
+        </a>
+        <button id="nav-toggle" aria-label="Menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="container hero-inner">
+        <div class="hero-tag">Disponible para nuevas oportunidades · Valencia / Madrid</div>
+        <h1 class="hero-name">
+            VÍCTOR<br>BLEDA
+            <span class="typed-wrapper"><span id="typed-text"></span></span>
+        </h1>
+        <p class="hero-desc">
+            Desarrollador de software proactivo especializado en <strong>IA y Big Data</strong>.
+            Experto en <strong>arquitecturas distribuidas</strong>, visión artificial y análisis
+            técnico orientado a resultados de alto impacto.
+        </p>
+        <div class="hero-cta">
+            <a href="#contact-section" class="btn-primary">📬 &nbsp;Contactar</a>
+            <a href="https://github.com/VictorBledaBeneyto" target="_blank" class="btn-ghost">⬡ &nbsp;GitHub</a>
+            <a href="https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/" target="_blank" class="btn-ghost">🔗 &nbsp;LinkedIn</a>
+        </div>
+        <div class="hero-stats">
+            <div><span class="stat-num" data-target="4">0</span><span class="stat-label">Años de formación</span></div>
+            <div><span class="stat-num" data-target="6">0</span><span class="stat-label">Experiencias profesionales</span></div>
+            <div><span class="stat-num" data-target="3">0</span><span class="stat-label">Premios y reconocimientos</span></div>
+            <div><span class="stat-num" data-target="20">0</span><span class="stat-label">Tecnologías dominadas</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT STRIP (sin teléfono, email obfuscado) -->
+<div class="contact-strip">
+    <div class="container">
+        <div class="contact-item">
+            <div class="ci-icon">📧</div>
+            <span><a class="email-obf" data-u="vicblebe" data-d="gmail.com" title="Clic para escribir un email"></a></span>
+        </div>
+        <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <span>Valencia / Madrid · Disponibilidad para viajar</span>
+        </div>
+        <div class="contact-item">
+            <div class="ci-icon">🌐</div>
+            <span>Valenciano · Español · Inglés (B2)</span>
+        </div>
+        <div class="contact-item">
+            <div class="ci-icon">🚗</div>
+            <span>Carné de conducir B</span>
+        </div>
+    </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+        <p class="section-label">Stack tecnológico</p>
+        <h2 class="section-title">Tecnologías &amp; <span>Skills</span></h2>
+        <div class="skill-categories">
+            <div>
+                <p class="skill-cat-title">Lenguajes &amp; Frameworks</p>
+                <div class="skill-tags">
+                    <span class="skill-tag hi">Python</span><span class="skill-tag hi">Java</span>
+                    <span class="skill-tag hi">Kotlin</span><span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">PHP</span><span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Flask</span><span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">WordPress</span>
+                </div>
+            </div>
+            <div>
+                <p class="skill-cat-title">IA &amp; Data Science</p>
+                <div class="skill-tags">
+                    <span class="skill-tag hi">PyTorch</span><span class="skill-tag hi">YOLOv8</span>
+                    <span class="skill-tag hi">ResNet-50</span><span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span><span class="skill-tag">Spark</span>
+                    <span class="skill-tag">Power BI</span><span class="skill-tag">MLP / Redes Neuronales</span>
+                </div>
+            </div>
+            <div>
+                <p class="skill-cat-title">Cloud &amp; Infraestructura</p>
+                <div class="skill-tags">
+                    <span class="skill-tag hi">AWS</span><span class="skill-tag">Bedrock</span>
+                    <span class="skill-tag">Lambda</span><span class="skill-tag">S3 / MinIO</span>
+                    <span class="skill-tag hi">Kafka</span><span class="skill-tag hi">Docker</span>
+                    <span class="skill-tag">Docker Compose</span><span class="skill-tag">Firebase</span>
+                </div>
+            </div>
+            <div>
+                <p class="skill-cat-title">Herramientas &amp; BBDD</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git / GitHub</span><span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span><span class="skill-tag">Odoo</span>
+                    <span class="skill-tag">Contasol</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="container">
+        <p class="section-label">Trayectoria profesional</p>
+        <h2 class="section-title">Experiencia <span>Profesional</span></h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <p class="timeline-date">2025</p>
+                <h3 class="timeline-role">Desarrollador de Software</h3>
+                <div class="timeline-company">Fibromark &nbsp;<span class="company-badge">DAM Prácticas</span></div>
+                <ul class="timeline-bullets">
+                    <li>Desarrollo de <strong>chatbot con IA</strong> usando Flutter para la interfaz móvil.</li>
+                    <li>Gestión de base de datos en <strong>tiempo real con Firebase</strong>.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-date">2025</p>
+                <h3 class="timeline-role">Desarrollador de Software / SEO</h3>
+                <div class="timeline-company">Grupo Moves &nbsp;<span class="company-badge">DAM Prácticas</span></div>
+                <ul class="timeline-bullets">
+                    <li>Mantenimiento y desarrollo web en <strong>WordPress</strong>.</li>
+                    <li>Optimización <strong>SEO técnica</strong> y gestión de contenidos digitales.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-date">2022</p>
+                <h3 class="timeline-role">Técnico Informático — Sistemas y Redes</h3>
+                <div class="timeline-company">Sermicro &nbsp;<span class="company-badge">SMR Prácticas</span></div>
+                <ul class="timeline-bullets">
+                    <li>Actualización de <strong>sistemas críticos</strong> en entorno empresarial.</li>
+                    <li>Resolución de incidencias hardware/software y soporte a usuarios.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-date">2021</p>
+                <h3 class="timeline-role">Técnico Informático (Erasmus+)</h3>
+                <div class="timeline-company">CITAN — Base Naval de Lisboa &nbsp;<span class="company-badge">Erasmus+</span></div>
+                <ul class="timeline-bullets">
+                    <li>Soporte avanzado en <strong>servidores</strong> y mantenimiento de infraestructura.</li>
+                    <li>Formación en <strong>sistemas de simulación naval</strong>.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-date">Julios 2022, 2023, 2024</p>
+                <h3 class="timeline-role">Monitor de Tiempo Libre / Comedor</h3>
+                <div class="timeline-company">A riure / Gedeo / Impuls</div>
+                <ul class="timeline-bullets"><li>Gestión de grupos en escuelas de verano, organización de actividades y gestión de conflictos.</li></ul>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-date">2019</p>
+                <h3 class="timeline-role">Auxiliar Administrativo</h3>
+                <div class="timeline-company">Lems</div>
+                <ul class="timeline-bullets"><li>Gestión documental, apoyo contable con <strong>Contasol</strong> y organización administrativa.</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <div class="container">
+        <p class="section-label">Formación académica</p>
+        <h2 class="section-title">Estudios &amp; <span>Certificaciones</span></h2>
+        <div class="edu-grid">
+            <div class="edu-card"><p class="edu-year">2025 – 2026</p><h3 class="edu-name">Especialización en IA y Big Data</h3><p class="edu-inst">CIPFP Mislata</p></div>
+            <div class="edu-card"><p class="edu-year">2023 – 2025</p><h3 class="edu-name">Desarrollo de Aplicaciones Multiplataforma</h3><p class="edu-inst">Campus Cámara · DAM</p></div>
+            <div class="edu-card"><p class="edu-year">2020 – 2022</p><h3 class="edu-name">Sistemas Microinformáticos y Redes</h3><p class="edu-inst">Campus Aula · SMR</p></div>
+            <div class="edu-card"><p class="edu-year">2018 – 2020</p><h3 class="edu-name">Monitor de Tiempo Libre / Comedor</h3><p class="edu-inst">Accent / Abast</p></div>
+            <div class="edu-card"><p class="edu-year">2017 – 2019</p><h3 class="edu-name">Auxiliar Administrativo</h3><p class="edu-inst">Jesuitas</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+        <p class="section-label">Proyectos destacados</p>
+        <h2 class="section-title">Lo que he <span>construido</span></h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-emoji">👁️</div>
+                <h3 class="project-title">Detección y Pixelado de Rostros</h3>
+                <p class="project-desc">Sistema distribuido Event-Driven con Kafka que detecta y pixela rostros en tiempo real usando YOLOv8 y ResNet-50 (PyTorch). Almacenamiento MinIO (S3) + PostgreSQL con dashboard Power BI.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Kafka</span><span class="stack-tag">YOLOv8</span>
+                    <span class="stack-tag">PyTorch</span><span class="stack-tag">MinIO</span>
+                    <span class="stack-tag">PostgreSQL</span><span class="stack-tag">Power BI</span>
+                </div>
+                <div class="project-links">
+                    <a class="proj-link" href="https://github.com/VictorBledaBeneyto/DeteccionYPixeladoDeImagenes" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-emoji">⚡</div>
+                <h3 class="project-title">Eficiencia Energética IoT</h3>
+                <p class="project-desc">Plataforma de predicción de consumo energético con Arquitectura Medallion y Redes Neuronales (MLP). Ingesta de datos IoT por capas y despliegue de modelo predictivo en Flask.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Spark</span><span class="stack-tag">MLP</span>
+                    <span class="stack-tag">Flask</span><span class="stack-tag">IoT</span>
+                    <span class="stack-tag">Python</span>
+                </div>
+                <div class="project-links">
+                    <a class="proj-link" href="https://github.com/VictorBledaBeneyto/Eficiencia-Energ-tica---Aula-IoT" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-emoji">🏆</div>
+                <h3 class="project-title">VenarIQ</h3>
+                <p class="project-desc">Plataforma tecnológica para visibilizar y potenciar el talento femenino en sectores STEM. Proyecto premiado a nivel nacional en el marco de la FP española.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Fullstack</span><span class="stack-tag">IA</span><span class="stack-tag">UX/UI</span>
+                </div>
+                <div class="project-award">🥉 3er Premio Transferencia del Conocimiento FP</div>
+                <div class="project-links">
+                    <a class="proj-link" href="https://fpempresa.net/iii-edicion-premios-transferencia-de-conocimiento-de-la-fp/" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        Página del concurso
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-emoji">🤖</div>
+                <h3 class="project-title">Chatbot IA — Fibromark</h3>
+                <p class="project-desc">Aplicación móvil con chatbot inteligente para el sector empresarial. Interfaz Flutter, backend Firebase con sincronización en tiempo real y flujos de conversación personalizados.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Flutter</span><span class="stack-tag">Firebase</span>
+                    <span class="stack-tag">Dart</span><span class="stack-tag">IA</span>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SOFT SKILLS -->
+<section id="about">
+    <div class="container">
+        <p class="section-label">Sobre mí</p>
+        <h2 class="section-title">Habilidades <span>Personales</span></h2>
+        <div class="soft-grid">
+            <div class="soft-card"><div class="soft-icon">🤝</div><div class="soft-name">Trabajo en equipo</div></div>
+            <div class="soft-card"><div class="soft-icon">🎯</div><div class="soft-name">Orientación a resultados</div></div>
+            <div class="soft-card"><div class="soft-icon">⚡</div><div class="soft-name">Proactividad</div></div>
+            <div class="soft-card"><div class="soft-icon">🧘</div><div class="soft-name">Resiliencia</div></div>
+            <div class="soft-card"><div class="soft-icon">👂</div><div class="soft-name">Escucha activa</div></div>
+            <div class="soft-card"><div class="soft-icon">🔄</div><div class="soft-name">Adaptabilidad</div></div>
+            <div class="soft-card"><div class="soft-icon">👑</div><div class="soft-name">Liderazgo (Delegado 2 cursos)</div></div>
+            <div class="soft-card"><div class="soft-icon">🌍</div><div class="soft-name">Internacional (Erasmus+)</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact-section">
+    <div class="container">
+        <p class="section-label">Contacto</p>
+        <h2 class="section-title" style="text-align:center;">¿Hablamos? <span>🚀</span></h2>
+        <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto;text-align:center;">Disponible para retos en IA, Big Data o desarrollo de software. Sin presión — un café virtual también sirve.</p>
+        <div class="contact-grid">
+            <a href="#" class="contact-pill email-obf" data-u="vicblebe" data-d="gmail.com">📧 &nbsp;<span class="email-obf" data-u="vicblebe" data-d="gmail.com"></span></a>
+            <a href="https://github.com/VictorBledaBeneyto" target="_blank" class="contact-pill">⬡ &nbsp;GitHub</a>
+            <a href="https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/" target="_blank" class="contact-pill">🔗 &nbsp;LinkedIn</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Víctor Bleda Beneyto &nbsp;·&nbsp; <a href="index.html">Portfolio</a> &nbsp;·&nbsp; Hecho con 💙 y demasiado café</p>
+    <p style="margin-top:8px;font-size:11px;opacity:.45;">
+        Pulsa <kbd>Enter</kbd> para terminal · <kbd>Esc</kbd> para cerrar · Konami ↑↑↓↓←→←→BA · Escribe <kbd>contratame</kbd> · Doble-clic gravedad · Triple-clic fuegos
+    </p>
+</footer>
+
+<!-- Inactivity character (same SVG stick figure with chair) -->
+<div id="idle-char">
+    <div class="idle-bubble" id="idle-bubble">¿Sigues leyendo? 👀</div>
+    <svg id="char-svg" width="80" height="115" viewBox="0 0 80 115" xmlns="http://www.w3.org/2000/svg">
+        <g id="g-chair" opacity="0">
+            <rect x="8" y="63" width="55" height="5" rx="2" fill="#8B4513"/>
+            <rect x="59" y="33" width="5" height="34" rx="2" fill="#A0522D"/>
+            <line x1="13" y1="68" x2="11" y2="92" stroke="#6B3410" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="57" y1="68" x2="59" y2="92" stroke="#6B3410" stroke-width="3.5" stroke-linecap="round"/>
+        </g>
+        <g id="g-tomb" opacity="0">
+            <rect x="18" y="48" width="44" height="52" rx="4" fill="#888"/>
+            <path d="M18,60 A22,22 0 0,1 62,60" fill="#aaa"/>
+            <text x="40" y="72" text-anchor="middle" font-size="7.5" fill="#555" font-family="Georgia,serif" font-weight="bold">R.I.P.</text>
+            <line x1="40" y1="76" x2="40" y2="90" stroke="#555" stroke-width="3"/>
+            <line x1="32" y1="83" x2="48" y2="83" stroke="#555" stroke-width="3"/>
+            <text x="40" y="100" text-anchor="middle" font-size="6" fill="#666" font-family="Georgia,serif">404: User Lost</text>
+        </g>
+        <path id="g-beard" d="M26,27 C22,40 58,40 54,27" fill="#8B6914" opacity="0"/>
+        <g id="g-body">
+            <circle cx="40" cy="16" r="13" fill="#f5d3b5" stroke="white" stroke-width="2"/>
+            <circle id="c-eye-l" cx="35" cy="13" r="2.5" fill="#333"/>
+            <circle id="c-eye-r" cx="45" cy="13" r="2.5" fill="#333"/>
+            <path id="c-mouth" d="M35,20 Q40,24 45,20" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <line x1="40" y1="29" x2="40" y2="56" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <line id="c-arm-l" x1="40" y1="38" x2="22" y2="52" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-arm-r" x1="40" y1="38" x2="58" y2="52" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-leg-lu" x1="40" y1="56" x2="28" y2="82" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-leg-ru" x1="40" y1="56" x2="52" y2="82" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="c-leg-ll" x1="28" y1="82" x2="28" y2="100" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+            <line id="c-leg-rl" x1="52" y1="82" x2="52" y2="100" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        </g>
+        <path id="c-sweat" d="M53,4 Q56,0 59,4 Q59,9 53,9 Z" fill="#88ccff" opacity="0"/>
+    </svg>
+</div>
+
+<!-- Easter eggs -->
+<canvas id="matrix-canvas"></canvas>
+<div id="hire-overlay">
+    <div class="hire-title">¡CONTRÁTAME!</div>
+    <div class="hire-sub">
+        <span class="email-obf" data-u="vicblebe" data-d="gmail.com" style="cursor:pointer;color:var(--cyan);"></span><br>
+        IA · Big Data · Desarrollo Multiplataforma<br>
+        <a href="https://github.com/VictorBledaBeneyto" target="_blank">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/" target="_blank">LinkedIn</a>
+    </div>
+    <button class="hire-close" onclick="closeHire()">✕ &nbsp;Cerrar</button>
+</div>
+
+<!-- Retro Terminal -->
+<div id="retro-overlay">
+    <div class="retro-titlebar">
+        <div class="retro-dot retro-dot-r"></div>
+        <div class="retro-dot retro-dot-y"></div>
+        <div class="retro-dot retro-dot-g" onclick="closeRetro()" title="Cerrar"></div>
+        <span style="margin-left:12px;">victor@cv:~$</span>
+        <span style="margin-left:auto;font-size:11px;opacity:.5;">Enter · Esc para cerrar</span>
+    </div>
+    <div class="retro-body" id="retro-body"></div>
+    <div class="retro-input-row">
+        <span class="retro-prompt">victor@cv:~$&nbsp;</span>
+        <input id="retro-input" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="help">
+    </div>
+</div>
+
+<!-- ═══ EXIT-INTENT OVERLAY ════════════════════════════════
+     Se muestra cuando el ratón sale por la parte superior
+     de la ventana (intento de cerrar pestaña / navegador).
+══════════════════════════════════════════════════════════ -->
+<div id="exit-overlay">
+    <div id="exit-card">
+        <span class="exit-emoji">🙏</span>
+        <div class="exit-line"></div>
+        <h2>¡Gracias por tu tiempo!</h2>
+        <p>
+            Ha sido un placer tenerte por aquí.<br>
+            Si algo te ha llamado la atención,<br>
+            <span>no dejes pasar la oportunidad</span> — los buenos devs<br>
+            no esperan indefinidamente. 😉
+        </p>
+        <div class="exit-actions">
+            <button class="exit-btn exit-btn-primary"
+                onclick="document.getElementById('exit-overlay').classList.remove('show');document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">
+                ✉️ Contáctame
+            </button>
+            <button class="exit-btn exit-btn-ghost"
+                onclick="document.getElementById('exit-overlay').classList.remove('show')">
+                Seguir viendo
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PITCH CHARACTER — aparece cada 60 s ════════════════
+     Personaje de palitos en cian que lanza frases de contratación.
+     Posicionado en la esquina inferior izquierda.
+══════════════════════════════════════════════════════════ -->
+<div id="pitch-char">
+    <div class="pitch-bubble" id="pitch-bubble">¡Hola! 👋</div>
+    <svg id="pitch-svg" width="80" height="115" viewBox="0 0 80 115"
+         xmlns="http://www.w3.org/2000/svg">
+        <!-- Cabeza -->
+        <circle cx="40" cy="16" r="13" fill="#f5d3b5" stroke="#00d4ff" stroke-width="2"/>
+        <circle id="pe-l" cx="35" cy="13" r="2.5" fill="#333"/>
+        <circle id="pe-r" cx="45" cy="13" r="2.5" fill="#333"/>
+        <path id="pm"  d="M35,20 Q40,24 45,20" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Cuerpo -->
+        <line x1="40" y1="29" x2="40" y2="62" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
+        <!-- Brazos (movibles) -->
+        <line id="pal" x1="40" y1="38" x2="22" y2="52" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+        <line id="par" x1="40" y1="38" x2="58" y2="52" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Piernas (movibles) -->
+        <line id="pll" x1="40" y1="62" x2="28" y2="88" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+        <line id="plr" x1="40" y1="62" x2="52" y2="88" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Cartel "HIRE ME" (solo en pose 'sign') -->
+        <g id="p-sign" opacity="0">
+            <rect x="53" y="38" width="25" height="17" rx="3"
+                  fill="rgba(0,212,255,.15)" stroke="#00d4ff" stroke-width="1.2"/>
+            <text x="65" y="50" text-anchor="middle"
+                  font-size="6.5" font-weight="700" fill="#00d4ff"
+                  font-family="JetBrains Mono,monospace">HIRE ME</text>
+        </g>
+        <!-- Signo de exclamación animado (pose 'excited') -->
+        <text id="p-excl" x="62" y="12" font-size="14" fill="#f59e0b" opacity="0"
+              font-weight="700">!</text>
+    </svg>
+</div>
+
+<!-- Hidden easter egg: fake deploy toast (type "gitpush") -->
+<div id="deploy-toast">
+    <span style="color:#888">$ </span>git push origin main<br>
+    <span id="dt-lines"></span>
+    <div class="dt-bar" id="dt-bar"></div>
+    <div class="dt-success" id="dt-success">✓ victor@dev deployed to production 🚀</div>
+</div>
+
+<script src="js/software.js" defer></script>
+
+</body>
+</html>
