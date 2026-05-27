@@ -13,6 +13,18 @@
 <body>
 
 <div id="page-transition"></div>
+<!-- script inline sin defer — se ejecuta antes del primer paint para que Chrome no muestre negro -->
+<!-- no se puede poner en el JS principal porque ese va con defer y llega tarde -->
+<script>
+(function(){
+    var pt = document.getElementById('page-transition');
+    if (pt) pt.style.opacity = '0';
+    window.addEventListener('pageshow', function() {
+        var pt = document.getElementById('page-transition');
+        if (pt) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
+    });
+})();
+</script>
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
 <canvas id="bg-canvas"></canvas>

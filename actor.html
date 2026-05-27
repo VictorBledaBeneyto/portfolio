@@ -53,8 +53,18 @@
 <!-- Foco de teatro que sigue al cursor -->
 <div id="spotlight"></div>
 
-<!-- Overlay de transición entre páginas -->
+<!-- overlay de transición — el script inline lo oculta antes del primer paint para evitar el flash negro en Chrome -->
 <div id="page-transition"></div>
+<script>
+(function(){
+    var pt = document.getElementById('page-transition');
+    if (pt) pt.style.opacity = '0';
+    window.addEventListener('pageshow', function() {
+        var pt = document.getElementById('page-transition');
+        if (pt) { pt.style.transition = 'none'; pt.style.opacity = '0'; }
+    });
+})();
+</script>
 
     <nav
         class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4 md:px-12 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
