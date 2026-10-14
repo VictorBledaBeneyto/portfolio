@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Víctor Bleda Beneyto</title>
+    <meta name="description" content="Víctor Bleda Beneyto — desarrollador de software junior en IA y Big Data (Valencia). Proyectos con Python, Java, Go, Kafka y AWS.">
+    <meta property="og:title" content="Víctor Bleda Beneyto — Desarrollador de Software · IA y Big Data">
+    <meta property="og:description" content="Desarrollador junior en IA y Big Data. Proyectos con Python, Java, Go, Kafka y AWS.">
+    <meta property="og:image" content="https://victorbledabeneyto.com/images/fotos/foto_cv.jpg">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="images/logo/Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/software.css">
+    <link rel="stylesheet" href="css/software.css?v=20261014">
 
 </head>
 <body>
@@ -34,16 +39,18 @@
     <a href="index.html" class="nav-logo"><span>~/</span>victor-bleda<span>.dev</span></a>
     <div class="nav-links" id="nav-links">
         <a href="#skills">Skills</a>
-        <a href="#experience">Experiencia</a>
-        <a href="#education">Formación</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#contact-section">Contacto</a>
+        <a href="#experience" data-en="Experience">Experiencia</a>
+        <a href="#education" data-en="Education">Formación</a>
+        <a href="#projects" data-en="Projects">Proyectos</a>
+        <a href="#contact-section" data-en="Contact">Contacto</a>
+        <a href="docs/Victor_Bleda_Beneyto_CV.pdf" data-en-href="docs/Victor_Bleda_Beneyto_CV_EN.pdf" target="_blank" rel="noopener" class="nav-cv">CV</a>
     </div>
     <div class="nav-right">
         <a href="index.html" class="nav-back">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 2L4 7l5 5"/></svg>
-            Volver
+            <span data-en="Back">Volver</span>
         </a>
+        <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Change language"><span class="lang-opt" data-l="es">ES</span><span class="lang-sep">/</span><span class="lang-opt" data-l="en">EN</span></button>
         <button id="nav-toggle" aria-label="Menú" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
@@ -55,26 +62,25 @@
     <div class="hero-glow"></div>
     <div class="hero-glow2"></div>
     <div class="container hero-inner">
-        <div class="hero-tag">Disponible para nuevas oportunidades · Valencia / Madrid</div>
+        <div class="hero-tag" data-en="Open to new opportunities · Valencia · willing to relocate">Abierto a nuevas oportunidades · Valencia · disponible para trasladarme</div>
         <h1 class="hero-name">
             VÍCTOR<br>BLEDA
             <span class="typed-wrapper"><span id="typed-text"></span></span>
         </h1>
-        <p class="hero-desc">
-            Desarrollador de software proactivo especializado en <strong>IA y Big Data</strong>.
-            Experto en <strong>arquitecturas distribuidas</strong>, visión artificial y análisis
-            técnico orientado a resultados de alto impacto.
+        <p class="hero-desc" data-en="Junior software developer focused on &lt;strong&gt;AI and Big Data&lt;/strong&gt;. I have built &lt;strong&gt;distributed systems&lt;/strong&gt; with Kafka, Go and Spring Boot, computer-vision and NLP models, and end-to-end data pipelines.">
+            Desarrollador de software junior especializado en <strong>IA y Big Data</strong>. He construido <strong>sistemas distribuidos</strong> con Kafka, Go y Spring Boot, modelos de visión artificial y NLP, y pipelines de datos de principio a fin.
         </p>
         <div class="hero-cta">
-            <a href="#contact-section" class="btn-primary">📬 &nbsp;Contactar</a>
+            <a href="#contact-section" class="btn-primary" data-en="📬 &amp;nbsp;Contact me">📬 &nbsp;Contactar</a>
+            <a href="docs/Victor_Bleda_Beneyto_CV.pdf" data-en-href="docs/Victor_Bleda_Beneyto_CV_EN.pdf" download class="btn-ghost cv-download" data-en="📄 &amp;nbsp;Download CV">📄 &nbsp;Descargar CV</a>
             <a href="https://github.com/VictorBledaBeneyto" target="_blank" class="btn-ghost">⬡ &nbsp;GitHub</a>
             <a href="https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/" target="_blank" class="btn-ghost">🔗 &nbsp;LinkedIn</a>
         </div>
         <div class="hero-stats">
-            <div><span class="stat-num" data-target="4">0</span><span class="stat-label">Años de formación</span></div>
-            <div><span class="stat-num" data-target="6">0</span><span class="stat-label">Experiencias profesionales</span></div>
-            <div><span class="stat-num" data-target="3">0</span><span class="stat-label">Premios y reconocimientos</span></div>
-            <div><span class="stat-num" data-target="20">0</span><span class="stat-label">Tecnologías dominadas</span></div>
+            <div><span class="stat-num" data-target="4">0</span><span class="stat-label" data-en="Years of training">Años de formación</span></div>
+            <div><span class="stat-num" data-target="7">0</span><span class="stat-label" data-en="Work experiences">Experiencias profesionales</span></div>
+            <div><span class="stat-num" data-target="3">0</span><span class="stat-label" data-en="Awards &amp;amp; recognitions">Premios y reconocimientos</span></div>
+            <div><span class="stat-num" data-target="30">0</span><span class="stat-label" data-en="Technologies in my projects">Tecnologías en mis proyectos</span></div>
         </div>
     </div>
 </section>
@@ -88,15 +94,15 @@
         </div>
         <div class="contact-item">
             <div class="ci-icon">📍</div>
-            <span>Valencia / Madrid · Disponibilidad para viajar</span>
+            <span data-en="Valencia · Willing to relocate and travel">Valencia · Disponible para trasladarme y viajar</span>
         </div>
         <div class="contact-item">
             <div class="ci-icon">🌐</div>
-            <span>Valenciano · Español · Inglés (B2)</span>
+            <span data-en="Valencian · Spanish · English (B2)">Valenciano · Español · Inglés (B2)</span>
         </div>
         <div class="contact-item">
             <div class="ci-icon">🚗</div>
-            <span>Carné de conducir B</span>
+            <span data-en="Driving licence (B)">Carné de conducir B</span>
         </div>
     </div>
 </div>
@@ -104,31 +110,33 @@
 <!-- SKILLS -->
 <section id="skills">
     <div class="container">
-        <p class="section-label">Stack tecnológico</p>
-        <h2 class="section-title">Tecnologías &amp; <span>Skills</span></h2>
+        <p class="section-label" data-en="Tech stack">Stack tecnológico</p>
+        <h2 class="section-title" data-en="Technologies &amp;amp; &lt;span&gt;Skills&lt;/span&gt;">Tecnologías &amp; <span>Skills</span></h2>
         <div class="skill-categories">
             <div>
-                <p class="skill-cat-title">Lenguajes &amp; Frameworks</p>
+                <p class="skill-cat-title" data-en="Languages &amp;amp; Frameworks">Lenguajes &amp; Frameworks</p>
                 <div class="skill-tags">
                     <span class="skill-tag hi">Python</span><span class="skill-tag hi">Java</span>
                     <span class="skill-tag hi">Kotlin</span><span class="skill-tag">Flutter</span>
                     <span class="skill-tag">PHP</span><span class="skill-tag">SQL</span>
                     <span class="skill-tag">Flask</span><span class="skill-tag">FastAPI</span>
                     <span class="skill-tag">WordPress</span>
+                    <span class="skill-tag hi">Spring Boot</span><span class="skill-tag">Go</span>
+                    <span class="skill-tag">TypeScript</span><span class="skill-tag">React</span>
                 </div>
             </div>
             <div>
-                <p class="skill-cat-title">IA &amp; Data Science</p>
+                <p class="skill-cat-title" data-en="AI &amp;amp; Data Science">IA &amp; Data Science</p>
                 <div class="skill-tags">
                     <span class="skill-tag hi">PyTorch</span><span class="skill-tag hi">YOLOv8</span>
                     <span class="skill-tag hi">ResNet-50</span><span class="skill-tag">NumPy</span>
                     <span class="skill-tag">Pandas</span><span class="skill-tag">Spark</span>
                     <span class="skill-tag">scikit-learn</span><span class="skill-tag">spaCy</span>
-                    <span class="skill-tag">Power BI</span><span class="skill-tag">MLP / Redes Neuronales</span>
+                    <span class="skill-tag">Power BI</span><span class="skill-tag" data-en="MLP / Neural Networks">MLP / Redes Neuronales</span>
                 </div>
             </div>
             <div>
-                <p class="skill-cat-title">Cloud &amp; Infraestructura</p>
+                <p class="skill-cat-title" data-en="Cloud &amp;amp; Infrastructure">Cloud &amp; Infraestructura</p>
                 <div class="skill-tags">
                     <span class="skill-tag hi">AWS</span><span class="skill-tag">Bedrock</span>
                     <span class="skill-tag">Lambda</span><span class="skill-tag">S3 / MinIO</span>
@@ -138,11 +146,13 @@
                 </div>
             </div>
             <div>
-                <p class="skill-cat-title">Herramientas &amp; BBDD</p>
+                <p class="skill-cat-title" data-en="Tools &amp;amp; Databases">Herramientas &amp; BBDD</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Git / GitHub</span><span class="skill-tag">PostgreSQL</span>
                     <span class="skill-tag">MySQL</span><span class="skill-tag">Odoo</span>
                     <span class="skill-tag">Contasol</span>
+                    <span class="skill-tag">Redis</span><span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">Prometheus</span><span class="skill-tag">Grafana</span>
                 </div>
             </div>
         </div>
@@ -152,56 +162,65 @@
 <!-- EXPERIENCE -->
 <section id="experience">
     <div class="container">
-        <p class="section-label">Trayectoria profesional</p>
-        <h2 class="section-title">Experiencia <span>Profesional</span></h2>
+        <p class="section-label" data-en="Career">Trayectoria profesional</p>
+        <h2 class="section-title" data-en="Work &lt;span&gt;Experience&lt;/span&gt;">Experiencia <span>Profesional</span></h2>
         <div class="timeline">
             <div class="timeline-item">
-                <p class="timeline-date">2025</p>
-                <h3 class="timeline-role">Desarrollador de Software</h3>
-                <div class="timeline-company">Fibromark &nbsp;<span class="company-badge">DAM Prácticas</span></div>
+                <p class="timeline-date" data-en="Oct 2026 – Present">Oct 2026 – Actualidad</p>
+                <h3 class="timeline-role" data-en="Systems Technician">Técnico de Sistemas</h3>
+                <div class="timeline-company">Grupo Sermicro &nbsp;<span class="company-badge" data-en="Current">Actual</span></div>
                 <ul class="timeline-bullets">
-                    <li>Desarrollo de <strong>chatbot con IA</strong> usando Flutter para la interfaz móvil.</li>
-                    <li>Gestión de base de datos en <strong>tiempo real con Firebase</strong>.</li>
+                    <li data-en="Workstation refresh project for &lt;strong&gt;El Corte Inglés&lt;/strong&gt;: preparing and configuring new devices.">Renovación de puestos de trabajo para <strong>El Corte Inglés</strong>: preparación y configuración de equipos nuevos.</li>
+                    <li data-en="Asset inventory, &lt;strong&gt;domain enrollment&lt;/strong&gt;, application and printer installation, and security configuration.">Inventariado, <strong>alta en dominio</strong>, instalación de aplicaciones e impresoras y configuración de seguridad.</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <p class="timeline-date">2025</p>
-                <h3 class="timeline-role">Desarrollador de Software / SEO</h3>
-                <div class="timeline-company">Grupo Moves &nbsp;<span class="company-badge">DAM Prácticas</span></div>
+                <h3 class="timeline-role" data-en="Software Developer">Desarrollador de Software</h3>
+                <div class="timeline-company">Fibromark &nbsp;<span class="company-badge" data-en="DAM internship">DAM Prácticas</span></div>
                 <ul class="timeline-bullets">
-                    <li>Mantenimiento y desarrollo web en <strong>WordPress</strong>.</li>
-                    <li>Optimización <strong>SEO técnica</strong> y gestión de contenidos digitales.</li>
+                    <li data-en="Built an &lt;strong&gt;AI chatbot&lt;/strong&gt; with Flutter for the mobile interface.">Desarrollo de <strong>chatbot con IA</strong> usando Flutter para la interfaz móvil.</li>
+                    <li data-en="&lt;strong&gt;Real-time database&lt;/strong&gt; management with Firebase.">Gestión de base de datos en <strong>tiempo real con Firebase</strong>.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <p class="timeline-date">2025</p>
+                <h3 class="timeline-role" data-en="Software Developer / SEO">Desarrollador de Software / SEO</h3>
+                <div class="timeline-company">Grupo Moves &nbsp;<span class="company-badge" data-en="DAM internship">DAM Prácticas</span></div>
+                <ul class="timeline-bullets">
+                    <li data-en="Website maintenance and development in &lt;strong&gt;WordPress&lt;/strong&gt;.">Mantenimiento y desarrollo web en <strong>WordPress</strong>.</li>
+                    <li data-en="&lt;strong&gt;Technical SEO&lt;/strong&gt; optimisation and digital content management.">Optimización <strong>SEO técnica</strong> y gestión de contenidos digitales.</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <p class="timeline-date">2022</p>
-                <h3 class="timeline-role">Técnico Informático — Sistemas y Redes</h3>
-                <div class="timeline-company">Sermicro &nbsp;<span class="company-badge">SMR Prácticas</span></div>
+                <h3 class="timeline-role" data-en="IT Technician — Systems and Networks">Técnico Informático — Sistemas y Redes</h3>
+                <div class="timeline-company">Sermicro &nbsp;<span class="company-badge" data-en="SMR internship">SMR Prácticas</span></div>
                 <ul class="timeline-bullets">
-                    <li>Actualización de <strong>sistemas críticos</strong> en entorno empresarial.</li>
-                    <li>Resolución de incidencias hardware/software y soporte a usuarios.</li>
+                    <li data-en="Updating &lt;strong&gt;critical systems&lt;/strong&gt; in a corporate environment.">Actualización de <strong>sistemas críticos</strong> en entorno empresarial.</li>
+                    <li data-en="Hardware/software incident resolution and user support.">Resolución de incidencias hardware/software y soporte a usuarios.</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <p class="timeline-date">2021</p>
-                <h3 class="timeline-role">Técnico Informático (Erasmus+)</h3>
+                <h3 class="timeline-role" data-en="IT Technician (Erasmus+)">Técnico Informático (Erasmus+)</h3>
                 <div class="timeline-company">CITAN — Base Naval de Lisboa &nbsp;<span class="company-badge">Erasmus+</span></div>
                 <ul class="timeline-bullets">
-                    <li>Soporte avanzado en <strong>servidores</strong> y mantenimiento de infraestructura.</li>
-                    <li>Formación en <strong>sistemas de simulación naval</strong>.</li>
+                    <li data-en="Advanced &lt;strong&gt;server&lt;/strong&gt; support and infrastructure maintenance.">Soporte avanzado en <strong>servidores</strong> y mantenimiento de infraestructura.</li>
+                    <li data-en="Training in &lt;strong&gt;naval simulation systems&lt;/strong&gt;.">Formación en <strong>sistemas de simulación naval</strong>.</li>
                 </ul>
             </div>
             <div class="timeline-item">
-                <p class="timeline-date">Julios 2022, 2023, 2024</p>
-                <h3 class="timeline-role">Monitor de Tiempo Libre / Comedor</h3>
-                <div class="timeline-company">A riure / Gedeo / Impuls</div>
-                <ul class="timeline-bullets"><li>Gestión de grupos en escuelas de verano, organización de actividades y gestión de conflictos.</li></ul>
+                <p class="timeline-date" data-en="Summers 2022 – 2024 and 2026">Veranos 2022 – 2024 y 2026</p>
+                <h3 class="timeline-role" data-en="Youth Leisure / Canteen Monitor">Monitor de Tiempo Libre / Comedor</h3>
+                <div class="timeline-company">Impuls / Gedeo / A riure / DXT Servicios</div>
+                <ul class="timeline-bullets"><li data-en="Managing groups at summer schools, organising activities and resolving conflicts.">Gestión de grupos en escuelas de verano, organización de actividades y gestión de conflictos.</li></ul>
             </div>
             <div class="timeline-item">
                 <p class="timeline-date">2019</p>
-                <h3 class="timeline-role">Auxiliar Administrativo</h3>
+                <h3 class="timeline-role" data-en="Administrative Assistant">Auxiliar Administrativo</h3>
                 <div class="timeline-company">Lems</div>
-                <ul class="timeline-bullets"><li>Gestión documental, apoyo contable con <strong>Contasol</strong> y organización administrativa.</li></ul>
+                <ul class="timeline-bullets"><li data-en="Document management, accounting support with &lt;strong&gt;Contasol&lt;/strong&gt; and administrative tasks.">Gestión documental, apoyo contable con <strong>Contasol</strong> y organización administrativa.</li></ul>
             </div>
         </div>
     </div>
@@ -210,14 +229,14 @@
 <!-- EDUCATION -->
 <section id="education">
     <div class="container">
-        <p class="section-label">Formación académica</p>
-        <h2 class="section-title">Estudios &amp; <span>Certificaciones</span></h2>
+        <p class="section-label" data-en="Education">Formación académica</p>
+        <h2 class="section-title" data-en="Studies &amp;amp; &lt;span&gt;Certifications&lt;/span&gt;">Estudios &amp; <span>Certificaciones</span></h2>
         <div class="edu-grid">
-            <div class="edu-card"><p class="edu-year">2025 – 2026</p><h3 class="edu-name">Especialización en IA y Big Data</h3><p class="edu-inst">CIPFP Mislata</p></div>
-            <div class="edu-card"><p class="edu-year">2023 – 2025</p><h3 class="edu-name">Desarrollo de Aplicaciones Multiplataforma</h3><p class="edu-inst">Campus Cámara · DAM</p></div>
-            <div class="edu-card"><p class="edu-year">2020 – 2022</p><h3 class="edu-name">Sistemas Microinformáticos y Redes</h3><p class="edu-inst">Campus Aula · SMR</p></div>
-            <div class="edu-card"><p class="edu-year">2018 – 2020</p><h3 class="edu-name">Monitor de Tiempo Libre / Comedor</h3><p class="edu-inst">Accent / Abast</p></div>
-            <div class="edu-card"><p class="edu-year">2017 – 2019</p><h3 class="edu-name">Auxiliar Administrativo</h3><p class="edu-inst">Jesuitas</p></div>
+            <div class="edu-card"><p class="edu-year">2025 – 2026</p><h3 class="edu-name" data-en="Vocational Master in AI and Big Data">Máster FP en IA y Big Data</h3><p class="edu-sub" data-en="Specialisation Course">Curso de Especialización</p><p class="edu-inst">CIPFP Mislata</p></div>
+            <div class="edu-card"><p class="edu-year">2023 – 2025</p><h3 class="edu-name" data-en="Multi-Platform Application Development">Desarrollo de Aplicaciones Multiplataforma</h3><p class="edu-inst">Campus Cámara · DAM</p></div>
+            <div class="edu-card"><p class="edu-year">2020 – 2022</p><h3 class="edu-name" data-en="Microcomputer Systems and Networks">Sistemas Microinformáticos y Redes</h3><p class="edu-inst">Campus Aula · SMR</p></div>
+            <div class="edu-card"><p class="edu-year">2018 – 2020</p><h3 class="edu-name" data-en="Youth Leisure / Canteen Monitor">Monitor de Tiempo Libre / Comedor</h3><p class="edu-inst">Accent / Abast</p></div>
+            <div class="edu-card"><p class="edu-year">2017 – 2019</p><h3 class="edu-name" data-en="Administrative Assistant">Auxiliar Administrativo</h3><p class="edu-inst">Jesuitas</p></div>
         </div>
     </div>
 </section>
@@ -225,14 +244,14 @@
 <!-- PROJECTS -->
 <section id="projects">
     <div class="container">
-        <p class="section-label">Proyectos destacados</p>
-        <h2 class="section-title">Lo que he <span>construido</span></h2>
+        <p class="section-label" data-en="Featured projects">Proyectos destacados</p>
+        <h2 class="section-title" data-en="What I have &lt;span&gt;built&lt;/span&gt;">Lo que he <span>construido</span></h2>
         <div class="projects-grid">
 
             <div class="project-card">
                 <div class="project-emoji">🏥</div>
-                <h3 class="project-title">TriageIA — Priorización Médica Automática</h3>
-                <p class="project-desc">Sistema de soporte a la decisión clínica que transforma el relato del paciente en una prioridad Manchester (C1–C5) mediante modelos NLP entrenados localmente. Pipeline orquestado con Apache Airflow, almacenamiento en MinIO y exposición de inferencia vía FastAPI con dashboard Streamlit.</p>
+                <h3 class="project-title" data-en="TriageIA — Automated Medical Triage">TriageIA — Priorización Médica Automática</h3>
+                <p class="project-desc" data-en="Clinical decision-support system that turns a patient&#x27;s account into a Manchester triage priority (C1–C5) using locally trained NLP models. Pipeline orchestrated with Apache Airflow, MinIO storage and FastAPI inference with a Streamlit dashboard.">Sistema de soporte a la decisión clínica que transforma el relato del paciente en una prioridad Manchester (C1–C5) mediante modelos NLP entrenados localmente. Pipeline orquestado con Apache Airflow, almacenamiento en MinIO y exposición de inferencia vía FastAPI con dashboard Streamlit.</p>
                 <div class="project-stack">
                     <span class="stack-tag">Airflow</span><span class="stack-tag">FastAPI</span>
                     <span class="stack-tag">Streamlit</span><span class="stack-tag">spaCy</span>
@@ -248,9 +267,33 @@
             </div>
 
             <div class="project-card">
+                <div class="project-emoji">💬</div>
+                <h3 class="project-title" data-en="Nexus — Real-time messaging">Nexus — Mensajería en tiempo real</h3>
+                <p class="project-desc" data-en="Full-stack messaging app: React + TypeScript SPA (Zustand, auto-reconnect with exponential backoff) on a Go backend with REST API and WebSockets. Horizontal scaling with Redis Pub/Sub, PostgreSQL full-text search, JWT, and observability with Prometheus and OpenTelemetry.">Aplicación de mensajería full stack: SPA en React y TypeScript (Zustand, reconexión con backoff exponencial) sobre un backend en Go con API REST y WebSockets. Escalado horizontal con Redis Pub/Sub, búsqueda full-text en PostgreSQL, JWT y observabilidad con Prometheus y OpenTelemetry.</p>
+                <div class="project-stack"><span class="stack-tag">Go</span><span class="stack-tag">React</span><span class="stack-tag">TypeScript</span><span class="stack-tag">WebSockets</span><span class="stack-tag">Redis</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Docker</span></div>
+                <div class="project-links">
+                    <a class="proj-link" href="https://github.com/VictorBledaBeneyto/Nexus" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-emoji">🛒</div>
+                <h3 class="project-title" data-en="QuickBuy — Microservices e-commerce">QuickBuy — E-commerce con microservicios</h3>
+                <p class="project-desc" data-en="7 Java 21 / Spring Boot microservices (API Gateway, Eureka, Config Server) coordinated through Apache Kafka: Saga choreography, Outbox pattern and CQRS with PostgreSQL and Redis. React 19 frontend with admin panel; tracing and metrics with Zipkin, Prometheus and Grafana.">7 microservicios en Java 21 y Spring Boot (API Gateway, Eureka, Config Server) coordinados con Apache Kafka: coreografía Saga, patrón Outbox y CQRS con PostgreSQL y Redis. Frontend en React 19 con panel de administración y trazas con Zipkin, Prometheus y Grafana.</p>
+                <div class="project-stack"><span class="stack-tag">Java 21</span><span class="stack-tag">Spring Boot</span><span class="stack-tag">Kafka</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Redis</span><span class="stack-tag">React</span><span class="stack-tag">Docker</span></div>
+                <div class="project-links">
+                    <a class="proj-link" href="https://github.com/VictorBledaBeneyto/quickbuy" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
                 <div class="project-emoji">👁️</div>
-                <h3 class="project-title">Detección y Pixelado de Rostros</h3>
-                <p class="project-desc">Sistema distribuido Event-Driven con Kafka que detecta y pixela rostros en tiempo real usando YOLOv8 y ResNet-50 (PyTorch). Almacenamiento MinIO (S3) + PostgreSQL con dashboard Power BI.</p>
+                <h3 class="project-title" data-en="Real-time Face Detection and Blurring">Detección y Pixelado de Rostros</h3>
+                <p class="project-desc" data-en="Event-driven distributed system with Kafka that detects and blurs faces in real time using YOLOv8 and ResNet-50 (PyTorch). MinIO (S3) + PostgreSQL storage with a Power BI dashboard.">Sistema distribuido Event-Driven con Kafka que detecta y pixela rostros en tiempo real usando YOLOv8 y ResNet-50 (PyTorch). Almacenamiento MinIO (S3) + PostgreSQL con dashboard Power BI.</p>
                 <div class="project-stack">
                     <span class="stack-tag">Kafka</span><span class="stack-tag">YOLOv8</span>
                     <span class="stack-tag">PyTorch</span><span class="stack-tag">MinIO</span>
@@ -266,8 +309,8 @@
 
             <div class="project-card">
                 <div class="project-emoji">⚡</div>
-                <h3 class="project-title">Eficiencia Energética IoT</h3>
-                <p class="project-desc">Plataforma de predicción de consumo energético con Arquitectura Medallion y Redes Neuronales (MLP). Ingesta de datos IoT por capas y despliegue de modelo predictivo en Flask.</p>
+                <h3 class="project-title" data-en="IoT Energy Efficiency">Eficiencia Energética IoT</h3>
+                <p class="project-desc" data-en="Energy-consumption forecasting platform with a Medallion architecture and neural networks (MLP). Layered IoT data ingestion and a predictive model deployed with Flask.">Plataforma de predicción de consumo energético con Arquitectura Medallion y Redes Neuronales (MLP). Ingesta de datos IoT por capas y despliegue de modelo predictivo en Flask.</p>
                 <div class="project-stack">
                     <span class="stack-tag">Spark</span><span class="stack-tag">MLP</span>
                     <span class="stack-tag">Flask</span><span class="stack-tag">IoT</span>
@@ -284,23 +327,23 @@
             <div class="project-card">
                 <div class="project-emoji">🏆</div>
                 <h3 class="project-title">VenarIQ</h3>
-                <p class="project-desc">Plataforma tecnológica para visibilizar y potenciar el talento femenino en sectores STEM. Proyecto premiado a nivel nacional en el marco de la FP española.</p>
+                <p class="project-desc" data-en="Tech platform to showcase and boost female talent in STEM. Awarded nationally within Spain&#x27;s vocational training (FP) programme.">Plataforma tecnológica para visibilizar y potenciar el talento femenino en sectores STEM. Proyecto premiado a nivel nacional en el marco de la FP española.</p>
                 <div class="project-stack">
                     <span class="stack-tag">Fullstack</span><span class="stack-tag">IA</span><span class="stack-tag">UX/UI</span>
                 </div>
-                <div class="project-award">🥉 3er Premio Transferencia del Conocimiento FP</div>
+                <div class="project-award" data-en="🥉 3rd Prize, FP Knowledge Transfer Awards">🥉 3er Premio Transferencia del Conocimiento FP</div>
                 <div class="project-links">
                     <a class="proj-link" href="https://fpempresa.net/iii-edicion-premios-transferencia-de-conocimiento-de-la-fp/" target="_blank">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                        Página del concurso
+                        <span data-en="Competition page">Página del concurso</span>
                     </a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-emoji">🤖</div>
-                <h3 class="project-title">Chatbot IA — Fibromark</h3>
-                <p class="project-desc">Aplicación móvil con chatbot inteligente para el sector empresarial. Interfaz Flutter, backend Firebase con sincronización en tiempo real y flujos de conversación personalizados.</p>
+                <h3 class="project-title" data-en="AI Chatbot — Fibromark">Chatbot IA — Fibromark</h3>
+                <p class="project-desc" data-en="Mobile app with an AI chatbot for business use. Flutter interface, Firebase backend with real-time sync and custom conversation flows.">Aplicación móvil con chatbot inteligente para el sector empresarial. Interfaz Flutter, backend Firebase con sincronización en tiempo real y flujos de conversación personalizados.</p>
                 <div class="project-stack">
                     <span class="stack-tag">Flutter</span><span class="stack-tag">Firebase</span>
                     <span class="stack-tag">Dart</span><span class="stack-tag">IA</span>
@@ -315,17 +358,17 @@
 <!-- SOFT SKILLS -->
 <section id="about">
     <div class="container">
-        <p class="section-label">Sobre mí</p>
-        <h2 class="section-title">Habilidades <span>Personales</span></h2>
+        <p class="section-label" data-en="About me">Sobre mí</p>
+        <h2 class="section-title" data-en="Soft &lt;span&gt;Skills&lt;/span&gt;">Habilidades <span>Personales</span></h2>
         <div class="soft-grid">
-            <div class="soft-card"><div class="soft-icon">🤝</div><div class="soft-name">Trabajo en equipo</div></div>
-            <div class="soft-card"><div class="soft-icon">🎯</div><div class="soft-name">Orientación a resultados</div></div>
-            <div class="soft-card"><div class="soft-icon">⚡</div><div class="soft-name">Proactividad</div></div>
-            <div class="soft-card"><div class="soft-icon">🧘</div><div class="soft-name">Resiliencia</div></div>
-            <div class="soft-card"><div class="soft-icon">👂</div><div class="soft-name">Escucha activa</div></div>
-            <div class="soft-card"><div class="soft-icon">🔄</div><div class="soft-name">Adaptabilidad</div></div>
-            <div class="soft-card"><div class="soft-icon">👑</div><div class="soft-name">Liderazgo (Delegado 2 cursos)</div></div>
-            <div class="soft-card"><div class="soft-icon">🌍</div><div class="soft-name">Internacional (Erasmus+)</div></div>
+            <div class="soft-card"><div class="soft-icon">🤝</div><div class="soft-name" data-en="Teamwork">Trabajo en equipo</div></div>
+            <div class="soft-card"><div class="soft-icon">🎯</div><div class="soft-name" data-en="Results-oriented">Orientación a resultados</div></div>
+            <div class="soft-card"><div class="soft-icon">⚡</div><div class="soft-name" data-en="Proactivity">Proactividad</div></div>
+            <div class="soft-card"><div class="soft-icon">🧘</div><div class="soft-name" data-en="Resilience">Resiliencia</div></div>
+            <div class="soft-card"><div class="soft-icon">👂</div><div class="soft-name" data-en="Active listening">Escucha activa</div></div>
+            <div class="soft-card"><div class="soft-icon">🔄</div><div class="soft-name" data-en="Adaptability">Adaptabilidad</div></div>
+            <div class="soft-card"><div class="soft-icon">👑</div><div class="soft-name" data-en="Leadership (class rep, 2 years)">Liderazgo (Delegado 2 cursos)</div></div>
+            <div class="soft-card"><div class="soft-icon">🌍</div><div class="soft-name" data-en="International (Erasmus+)">Internacional (Erasmus+)</div></div>
         </div>
     </div>
 </section>
@@ -333,11 +376,12 @@
 <!-- CONTACT -->
 <section id="contact-section">
     <div class="container">
-        <p class="section-label">Contacto</p>
-        <h2 class="section-title" style="text-align:center;">¿Hablamos? <span>🚀</span></h2>
-        <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto;text-align:center;">Disponible para retos en IA, Big Data o desarrollo de software. Sin presión — un café virtual también sirve.</p>
+        <p class="section-label" data-en="Contact">Contacto</p>
+        <h2 class="section-title" style="text-align:center;" data-en="Shall we talk? &lt;span&gt;🚀&lt;/span&gt;">¿Hablamos? <span>🚀</span></h2>
+        <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto;text-align:center;" data-en="Open to challenges in AI, Big Data or software development. No pressure: a virtual coffee works too.">Disponible para retos en IA, Big Data o desarrollo de software. Sin presión — un café virtual también sirve.</p>
         <div class="contact-grid">
             <a href="#" class="contact-pill email-obf" data-u="vicblebe" data-d="gmail.com">📧 &nbsp;<span class="email-obf" data-u="vicblebe" data-d="gmail.com"></span></a>
+            <a href="docs/Victor_Bleda_Beneyto_CV.pdf" data-en-href="docs/Victor_Bleda_Beneyto_CV_EN.pdf" download class="contact-pill cv-download" data-en="📄 &amp;nbsp;Download CV">📄 &nbsp;Descargar CV</a>
             <a href="https://github.com/VictorBledaBeneyto" target="_blank" class="contact-pill">⬡ &nbsp;GitHub</a>
             <a href="https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/" target="_blank" class="contact-pill">🔗 &nbsp;LinkedIn</a>
         </div>
@@ -345,7 +389,7 @@
 </section>
 
 <footer>
-    <p>© 2026 Víctor Bleda Beneyto &nbsp;·&nbsp; <a href="index.html">Portfolio</a> &nbsp;·&nbsp; Hecho con 💙 y demasiado café</p>
+    <p>© 2026 Víctor Bleda Beneyto &nbsp;·&nbsp; <a href="index.html">Portfolio</a> &nbsp;·&nbsp; <span data-en="Made with 💙 and too much coffee">Hecho con 💙 y demasiado café</span></p>
     <p style="margin-top:8px;font-size:11px;opacity:.45;">
         Pulsa <kbd>Enter</kbd> para terminal · <kbd>Esc</kbd> para cerrar · Konami ↑↑↓↓←→←→BA · Escribe <kbd>contratame</kbd> · Doble-clic gravedad · Triple-clic fuegos
     </p>
@@ -398,7 +442,7 @@
         &nbsp;·&nbsp;
         <a href="https://www.linkedin.com/in/victor-bleda-beneyto-4a9a90237/" target="_blank">LinkedIn</a>
     </div>
-    <button class="hire-close" onclick="closeHire()">✕ &nbsp;Cerrar</button>
+    <button class="hire-close" onclick="closeHire()" data-en="✕ &amp;nbsp;Close">✕ &nbsp;Cerrar</button>
 </div>
 
 <!-- Retro Terminal -->
@@ -423,8 +467,13 @@
     <div id="exit-card">
         <span class="exit-emoji">🙏</span>
         <div class="exit-line"></div>
-        <h2>¡Gracias por tu tiempo!</h2>
-        <p>
+        <h2 data-en="Thanks for your time!">¡Gracias por tu tiempo!</h2>
+        <p data-en="
+            It has been a pleasure having you here.&lt;br&gt;
+            If something caught your eye,&lt;br&gt;
+            &lt;span&gt;don&#x27;t miss the chance&lt;/span&gt; — good devs&lt;br&gt;
+            don&#x27;t wait forever. 😉
+        ">
             Ha sido un placer tenerte por aquí.<br>
             Si algo te ha llamado la atención,<br>
             <span>no dejes pasar la oportunidad</span> — los buenos devs<br>
@@ -433,11 +482,11 @@
         <div class="exit-actions">
             <button class="exit-btn exit-btn-primary"
                 onclick="document.getElementById('exit-overlay').classList.remove('show');document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">
-                ✉️ Contáctame
+                <span data-en="✉️ Contact me">✉️ Contáctame</span>
             </button>
             <button class="exit-btn exit-btn-ghost"
                 onclick="document.getElementById('exit-overlay').classList.remove('show')">
-                Seguir viendo
+                <span data-en="Keep browsing">Seguir viendo</span>
             </button>
         </div>
     </div>
@@ -484,7 +533,8 @@
     <div class="dt-success" id="dt-success">✓ victor@dev deployed to production 🚀</div>
 </div>
 
-<script src="js/software.js" defer></script>
+<script src="js/software.js?v=20261014" defer></script>
+<script src="js/i18n.js?v=20261014" defer></script>
 
 </body>
 </html>
