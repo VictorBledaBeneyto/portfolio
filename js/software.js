@@ -46,18 +46,21 @@ document.querySelectorAll('a,button,.skill-tag,.project-card,.edu-card,.soft-car
 // efecto typewriter en el hero — escribe y borra las frases en bucle
 // esto lo vi en varios portfolios y había que ponerlo, me salió bastante chulo
 // ────────────────────────────────
-const PHRASES = ['Desarrollador de Software','Especialista en IA & Big Data','Arquitecturas Distribuidas','Visión Artificial · PyTorch','Event-Driven · Kafka · Docker'];
+const PHRASES = ['Desarrollador de Software','Especialista en IA & Big Data','Sistemas Distribuidos','Visión Artificial · PyTorch','Event-Driven · Kafka · Docker'];
+const PHRASES_EN = ['Software Developer','AI & Big Data','Distributed Systems','Computer Vision · PyTorch','Event-Driven · Kafka · Docker'];
+const isEN=()=>document.documentElement.lang==='en';
+const curPhrases=()=>isEN()?PHRASES_EN:PHRASES;
 let pIdx=0,cIdx=0,deleting=false;
 const typedEl=document.getElementById('typed-text');
 function typeWriter(){
-    const ph=PHRASES[pIdx];
+    const ph=curPhrases()[pIdx%curPhrases().length];
     if(!deleting){
         typedEl.textContent=ph.slice(0,++cIdx);
         if(cIdx===ph.length){deleting=true;setTimeout(typeWriter,1800);return;}
         setTimeout(typeWriter,55);
     } else {
         typedEl.textContent=ph.slice(0,--cIdx);
-        if(cIdx===0){deleting=false;pIdx=(pIdx+1)%PHRASES.length;setTimeout(typeWriter,300);return;}
+        if(cIdx===0){deleting=false;pIdx=(pIdx+1)%curPhrases().length;setTimeout(typeWriter,300);return;}
         setTimeout(typeWriter,28);
     }
 }
@@ -156,16 +159,16 @@ function setCharState(s){
 }
 let idleTimer=null;
 const STAGES=[
-    {delay:5000,state:1,msg:'¿Sigues ahí? El scroll no se mueve 👀'},
-    {delay:5000,state:2,msg:'process.sleep(∞)... ¿Qué está pasando? 🤔'},
-    {delay:5000,state:3,msg:'git blame — ¿cuánto llevas sin scroll? 🧔'},
-    {delay:5000,state:4,msg:'404: User Not Found. R.I.P.'},
+    {delay:5000,state:1,msg:'¿Sigues ahí? El scroll no se mueve 👀',en:'Still there? The scroll isn\'t moving 👀'},
+    {delay:5000,state:2,msg:'process.sleep(∞)... ¿Qué está pasando? 🤔',en:'process.sleep(∞)... What\'s going on? 🤔'},
+    {delay:5000,state:3,msg:'git blame — ¿cuánto llevas sin scroll? 🧔',en:'git blame: how long since you scrolled? 🧔'},
+    {delay:5000,state:4,msg:'404: User Not Found. R.I.P.',en:'404: User Not Found. R.I.P.'},
 ];
 function scheduleIdle(idx){
     if(idx>=STAGES.length)return;
     idleTimer=setTimeout(()=>{
         setCharState(STAGES[idx].state);
-        idleBubble.textContent=STAGES[idx].msg;
+        idleBubble.textContent=(isEN()&&STAGES[idx].en)||STAGES[idx].msg;
         idleEl.classList.add('show');
         scheduleIdle(idx+1);
     },STAGES[idx].delay);
@@ -347,26 +350,31 @@ const CMDS={
     ],
     skills:()=>[
         {t:'hi', s:'─── Stack ───────────────────────────────────'},
-        {t:'out',s:'Lenguajes:  Python · Java · Kotlin · Flutter · PHP · SQL'},
+        {t:'out',s:'Lenguajes:  Python · Java · Go · TypeScript · Kotlin · SQL'},
         {t:'out',s:'IA/Data:    PyTorch · YOLOv8 · ResNet-50 · Spark · MLP'},
-        {t:'out',s:'Cloud:      AWS · Kafka · Docker · Firebase · MinIO'},
+        {t:'out',s:'Backend:    Spring Boot · FastAPI · Kafka · Redis · React'},
+        {t:'out',s:'Cloud:      AWS · Docker · Airflow · Firebase · MinIO'},
         {t:'out',s:'Tools:      Git · PostgreSQL · MySQL · Odoo · Power BI'},
     ],
     'ls projects':()=>[
         {t:'hi', s:'─── Proyectos ───────────────────────────────'},
-        {t:'out',s:'[1] Detección y Pixelado de Rostros  — Kafka+YOLOv8+PyTorch'},
-        {t:'out',s:'[2] Eficiencia Energética IoT         — Medallion+MLP+Flask'},
-        {t:'out',s:'[3] VenarIQ 🏆                        — 3er Premio FP'},
-        {t:'out',s:'[4] Chatbot IA Fibromark              — Flutter+Firebase'},
+        {t:'out',s:'[1] TriageIA                         — NLP+Airflow+FastAPI'},
+        {t:'out',s:'[2] Nexus                            — Go+React+WebSockets'},
+        {t:'out',s:'[3] QuickBuy                         — Spring Boot+Kafka'},
+        {t:'out',s:'[4] Detección y Pixelado de Rostros  — Kafka+YOLOv8+PyTorch'},
+        {t:'out',s:'[5] Eficiencia Energética IoT         — Medallion+MLP+Flask'},
+        {t:'out',s:'[6] VenarIQ 🏆                        — 3er Premio FP'},
+        {t:'out',s:'[7] Chatbot IA Fibromark              — Flutter+Firebase'},
         {t:'sys',s:'→ github.com/VictorBledaBeneyto'},
     ],
     'cat exp.txt':()=>[
         {t:'hi', s:'─── Experiencia ─────────────────────────────'},
+        {t:'out',s:'2026  Grupo Sermicro     — Técnico de Sistemas (actual)'},
         {t:'out',s:'2025  Fibromark          — Dev Software (Prácticas)'},
         {t:'out',s:'2025  Grupo Moves        — Dev Software / SEO (Prácticas)'},
         {t:'out',s:'2022  Sermicro           — Técnico Informático'},
         {t:'out',s:'2021  CITAN Lisboa       — Técnico IT (Erasmus+)'},
-        {t:'out',s:'2018  Accent/Abast       — Monitor Tiempo Libre'},
+        {t:'out',s:'2022-26 Impuls/Gedeo/A riure/DXT — Monitor Tiempo Libre'},
         {t:'out',s:'2019  Lems               — Auxiliar Administrativo'},
     ],
     contact:()=>[
@@ -468,6 +476,7 @@ document.addEventListener('keydown',e=>{
         { msg:'Cada minuto sin contratarme\nes un minuto perdido.\nEs matemática pura. 📊',       pose:'hip'     },
     ];
 
+    const PITCHES_EN = ['We are made for each other...\nyou with an offer, me with code. 💼', 'You know you need me?\nYour instinct knows. 😏', "I'm like Docker:\nI fit in any environment. 🐳", 'Seen my stack?\nPyTorch · Kafka · AWS · YOLOv8...\nimpressive, right? 👀', 'Your competitors are already looking\nfor profiles like mine. Just saying. ⚡', "Still haven't hired me?\ngit blame your HR department. 😂", "I'm not the hero you deserve,\nI'm the dev you need. 🦸", 'Spoiler: they hire me in the end.\nWhy not be the first? 🎬', 'Clean commits,\nreadable code\nand available. 📬', "Between you and me:\nI'm exactly what you're looking for,\nand what you didn't know you needed. 💡", 'Erasmus+ in Lisbon, FP awards,\nAI & Big Data...\nwhat else do you want to see? 🚀', 'Every minute without hiring me\nis a minute lost.\nPure maths. 📊'];
     function sp(el, attrs) { Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k,v)); }
 
     function setPose(pose) {
@@ -509,11 +518,11 @@ document.addEventListener('keydown',e=>{
     let hideTimer  = null;
 
     function showPitch() {
-        const p = PITCHES[pitchIdx % PITCHES.length];
+        const pi = pitchIdx % PITCHES.length; const p = PITCHES[pi];
         pitchIdx++;
 
         // actualizamos el texto del bocadillo (los \n los convertimos en <br>)
-        pitchBub.innerHTML = p.msg.replace(/\n/g, '<br>');
+        pitchBub.innerHTML = ((isEN() && PITCHES_EN[pi]) || p.msg).replace(/\n/g, '<br>');
         setPose(p.pose);
 
         // mostramos el personaje
@@ -677,7 +686,7 @@ function deployVictor() {
     document.querySelectorAll('a[href]').forEach(link => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('#') || href.startsWith('mailto') ||
-            href.startsWith('http') || link.target === '_blank') return;
+            href.startsWith('http') || link.target === '_blank' || link.hasAttribute('download')) return;
         link.addEventListener('click', e => {
             e.preventDefault();
             pt.style.transition = 'opacity .45s ease';
